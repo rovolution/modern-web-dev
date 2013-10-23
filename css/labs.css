@@ -40,12 +40,24 @@ body {
 
 /* Additional Styles by Rohit
 -------------------------------------------------- */
-.black-text {
+body {
+  background-color: rgb(224, 224, 224);
+}
+
+.black {
   color: black;
 }
 
+.red {
+  color: red;
+}
+
+.btn-answer {
+  display: block;
+}
+
 .question-list {
-  margin-top: 5em;
+  margin-top: 100px;
 }
 
 .btn-answer {
@@ -53,5 +65,8 @@ body {
 }
 
 .question {
-  margin-bottom: 4em;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
