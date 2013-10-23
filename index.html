@@ -1,0 +1,1157 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Modern Web Development with JavaScript</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Custom styles -->
+		<link rel="stylesheet" href="css/styles.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Modern Web Development with JavaScript</h1>
+					<p>
+						<h3><a href="http://rovolutionary.com/">Rohit Kalkur</a> - K83C</h3>
+					</p>
+				</section>
+
+				<section>
+					<h2>Course Objectives</h2>
+					<ul>
+						<li>JavaScript Refresher</li>
+						<li>How to Structure a Modern Web Application</li>
+						<li>Overview of Client-side JavaScript Frameworks</li>
+						<li>Test Driven Development</li>
+						<li>Build our own Application!</li>
+					</ul>
+				</section>
+
+				<!-- Course content STARTS here -->
+
+
+				<!-- JavaScript Refresher -->
+
+				<section>
+					<h2>History of JavaScript</h2>
+					<ul>
+						<li>Created by Netscape engineer Brendan Eich in April 1995</li>
+						<li>First called Mocha and then LiveScript</li>
+						<li>Has nothing to do with Java despite the name!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>JavaScript - Variables</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/* Variable Initialization/Declaration */
+var myVariable = 5;
+var myString = "myString";
+var myBoolean = false;
+
+/* Print Output To Debug Console */
+console.log("my variable is " + myVariable); //Output: "my variable is 5" 
+console.log("my string is " + myString); //Output: "my string is myString"
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Objects</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/* Object Initialization/Declaration */
+var obj = {
+	"prop1" : 5,
+	prop2 : "value of property 2"
+};
+
+console.log( obj.prop1 ); // Output: 5
+console.log( obj["prop2"] ); // Output: "value of property 2"
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Loops</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+//TODO: example of various loops					
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Functions</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/* Function Initialization/Declaration */
+function myFunction() {
+	if(arguments[0]) {
+	     console.log("This is my function with arg " + arguments[0]);
+	} else {
+	     console.log("This is my function!");
+	}
+}
+
+myFunction(); // Output: "This is my function!"
+myFunction(1); // Output: "This is my function with arg 1"
+
+var mySecondFunction = function(arg) {
+    console.log("This is my other function with arg " + arg);
+};
+
+mySecondFunction(2); // Output: "This is my other function with arg 2"
+
+(function() { 
+    console.log("Immediately Invoked Function Expression (IIFE)"); 
+})() // Output: "Immediately Invoked Function Expression (IIFE)"
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Type Checking</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+//TODO: example of type checking	
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript  - Context</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var user = {
+	name : "Al Grasso",
+	printName : function() {
+            console.log("Username: " + this.name);
+	}
+}
+user.printName(); /* Output: "Username: Al Grasso" */
+					</code></pre>
+				</section>
+
+
+				<section>
+					<h2>JavaScript - Boolean Logic</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/* Comparison Operators */
+console.log( 0 == false ); // Output: true
+console.log( 0 === false ); // Output: false
+console.log( 0 != false ); // Output: false
+console.log( 0 !== false ); // Output: true
+
+/* Ternary Statement */
+var val = 0 <= 15 ? "less than or equal to" : "greater than";
+console.log(val); // Output: "less than or equal to"
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Prototypical Inheritance</h2>
+					-- TODO: Insert diagram of prototype chain --
+				</section>
+
+				<section>
+					<h2>JavaScript - Prototypical Inheritance</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/* Base prototype */
+var fruit = {
+  "color" : null,
+  "shape" : null
+}
+
+/* Orange constructor */
+function Orange() {
+  this.color = "orange";
+  this.shape = "round";
+  this.makeJuice = function() { 
+     console.log("Made orange juice!");
+  }
+}
+Orange.prototype = fruit;
+
+/* Bananas constructor */
+function Banana() {
+  this.color = "yellow";
+  this.shape = "long curving cylinder";
+}
+Banana.prototype = fruit;
+
+var myOrange = new Orange();
+var myBanana = new Banana();
+
+console.log(myOrange.color); // Output: "orange"
+console.log(myBanana.color); // Output: "yellow"
+
+myOrange.makeJuice(); // Output: "Made orange juice!"
+myBanana.makeJuice(); // TypeError: Object #&ltBanana&gt has no method 'makeJuice'
+
+
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Scope</h2>
+					<ul>
+						<li>Established within each function</li>
+						<li>'var' keyword scopes variable to the function it is contained within</li>
+						<li>If reference not found in current scope, the above scope is checked</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var a = 1;
+function funcOne() {
+    a = 2;
+}
+funcOne();
+console.log(a); // Output: 2
+
+
+var b = 1;
+function funcTwo() {
+    var b = 2;
+}
+funcTwo();
+console.log(b); // Output: 1
+
+
+function funcThree() {
+	function funcFour() {
+              console.log("Four");
+	}
+	funcFour();
+}
+funcThree(); // Output: "Four"
+funcFour(); // ReferenceError: funcFour is not defined
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript  - Hoisting</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function printA() {
+	console.log(a);
+	var a = 1;
+}
+printA(); // Output: Any guesses? Try inputting it into the console
+
+
+
+
+printNumber(4); // Output: "The number is 4"
+function printNumber(num) {
+	console.log("The number is " + num);
+}
+
+
+
+printFoo(4); // TypeError: undefined is not a function
+var printFoo = function(foo) {
+	console.log(foo);
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Exception Throwing/Handling</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+//TODO: example of handling/throwing exceptions					
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Element Selection & Event Binding (via JQuery)</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/* Select the HTML element with id = element1 and bind a click event to it */
+$("#element1").on('click', function(e) {
+	e.preventDefault();
+	console.log("clicked on element1!");
+});
+
+/* Unbind the 'click' event from all elements with the class tag 'listing' */
+$(".listing").off('click');
+
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Lab Time - JavaScript</h2>
+					<a href="lab1.html" target="_blank">Click to begin lab</a>
+				</section>
+
+				<section>
+					<h2>Reminders</h2>
+					<ul>
+						<li>Always scope your variables!</li>
+						<li>Everything except the primitive data types (number, boolean, string) is an object!</li>
+						<li>use <code>null</code> (instead of <code>undefined</code>) to mean 'having no value'</li>
+						<li>Always use strict comparison operators!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>JavaScript - Additional Resources</h2>
+					<ul>
+						<li><a href="http://www.w3schools.com/js/default.asp">W3 Schools</a></li>
+						<li><a href="http://api.jquery.com/">JQuery Documentation Page</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>JavaScript Back In the Day</h2>
+					<ul>
+						<li><a href='http://codepen.io/yahtaa/full/lrnhd'>Vintage BSB</a></li>
+						<li><a href='http://codepen.io/lesleyburr/full/yGgco'>Clueless Fan Page</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>JavaScript Today!</h2>
+					<ul>
+						<li><a href='http://tweetmap.it/'>Tweet Map</a></li>
+						<li><a href='http://www.rleonardi.com/interactive-resume/'>Interactive Resume</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<ul>
+						<li>As browsers have evolved over time, so has JavaScript feature set</li>
+						<li>More application logic now being done on the client-side itself</li>
+						<li>Primary benefits are to speed and performance</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>DOM</h2>
+					<ul>
+						<li><strong>D</strong>ocument <strong>O</strong>bject <strong>M</strong>odel</li>
+						<li>API for interacting with HTML markup as objects</li>
+						<li>HTML is just text, DOM is what we use to interface with it</li>
+						<li>Often times the terms (HTML, DOM) are used interchangeably</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>JSON</h2>
+					<ul>
+						<li><strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation</li>
+						<li>Data format based on JavaScript objects</li>
+						<li>Note: Keys must be double quoted!</li>
+						<li>Benefit: Easy to work with in JavaScript!</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+{
+	"key1" : 1,
+	"key2" : "two",
+	"key3" : [1, { "key" : "value" }],
+	"key4" : true
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>HTTP</h2>
+					<ul>
+						<li><strong>H</strong>yper<strong>t</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol</li>
+						<li>Method of communicating between client and server sides</li>
+						<li>Client sends Request, server comes back with Response</li>
+						<li>Request consists of info such as:
+							<ul>
+								<li>Path <span class="custom-highlight-purple">'/path/to/go/to'</span></li>
+								<li>Method <span class="custom-highlight-purple">GET</span></li>
+								<li>Paramters <span class="custom-highlight-purple">Key-value pairs</span></li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>AJAX</h2>
+					<ul>
+						<li><strong>A</strong>synchronous <strong>J</strong>ava<strong>S</strong>cript and <strong>X</strong>ML</li>
+						<li>Retrieve data from server via HTTP requests</li>
+						<li>Only update parts of the view as necessary</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>REST</h2>
+					<ul>
+						<li><strong>R</strong>epresentational <strong>S</strong>tate <strong>T</strong>ransfer</li>
+						<li>Design for communicating with server-side via HTTP to manipulate back-end data objects</li>
+						<li>Uses 4 HTTP methods:
+							<ul>
+								<li class="fragment">GET - Retrieve a resource</li>
+								<li class="fragment">POST - Create a resource</li>
+								<li class="fragment">PUT - Update a resource</li>
+								<li class="fragment">DELETE - Delete a resource</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>REST</h2>
+					<ul>
+						<li>Example: I want to retrieve the list of users</li>
+						<li>Request:  <span class="custom-highlight-purple">GET '/users'</span></li>
+						<li>Response: JSON object</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+[
+    {
+        "id" : 0,
+        "username" : "agrasso",
+        "email" : "agrasso@mitre.org",
+    },
+    {
+        "id" : 1,
+        "username" : "rkalkur",
+        "email" : "rkalkur@mitre.org",
+    }
+]
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>REST</h2>
+					<ul>
+						<li>Example: I want to delete the user with id 1</li>
+						<li>Request:  <span class="custom-highlight-purple">DELETE '/users/1'</span></li>
+						<li>Response: JSON object</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">{ "message" : "User rkalkur was deleted!" }
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Lab Time - Client-server Interaction</h2>
+					<a href="">Click to begin lab</a>
+				</section>
+
+				<section>
+					<h2>Traditional Application Structure</h2>
+					<p>
+						--- insert diagram here ---</br>
+					</p>
+				</section>
+
+				<section>
+					<h2>Single Page Application (SPA)</h2>
+					<p>
+						--- insert diagram here ---</br>
+						Data retrieved from server-side via REST API serving up JSON data</br>
+						Client-side code makes AJAX calls to server-side API when data is needed</br>
+					</p>
+				</section>
+
+				<section>
+					<h2></h2>
+					<ul>
+						<li>AJAX requests made to REST API to manipulate back-end data resources</li>
+						<li>Only individual pieces of the DOM are updated as needed</li>
+						<li>No complete page reload!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Benefits of SPA Architecture</h2>
+					<ul>
+						<li>View rendering/updating all done on the client-side itself!</li>
+						<li>Less requests to the server-side = a faster application!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>JavaScript Client-Side Frameworks</h2>
+					<ul>
+						<li>Allows developer to neatly structure client-side codebase</li>
+						<li>Provides a predefined, out-of-box structure (that can be extended if need be)</li>
+						<li>Popular frameworks include: 
+							<ul>
+								<li><a href="http://backbonejs.org/">Backbone</a></li>
+								<li><a href="http://emberjs.com/">Ember</a></li>
+								<li><a href="http://angularjs.org/">Angular</a></li>
+								<li><a href="http://knockoutjs.com/">Knockout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Backbone.js</h2>
+					<ul>
+						<li>Created by Jeremy Ashkenas</li>
+						<li>Client-side code separated into Models, Collections, Views, and Routers</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Backbone.js - Model</h2>
+					<ul>
+						<li>Representation of back-end data resources</li>
+						<li>Responsible for interacting with back-end via REST API</li>
+						<li>Triggers events when changed</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var Employee = Backbone.Model.extend({});
+
+/* Create instance of Employee */
+var ceo = new Employee({ name : "Al Grasso" });
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Backbone.js - Collection</h2>
+					<ul>
+						<li>Set of data models</li>
+						<li>Can also manipulate resources via REST API (fetch all models, create model)</li>
+						<li>Triggers events when models are added or removed</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var EmployeeList = Backbone.Collection.extend({
+   model: Employee,
+   url: '/employees'
+});
+
+/* Create instance of EmployeeList */
+var employees = new EmployeeList();
+
+/* Bind a callback fn to employee's add event */
+employees.bind('add', function() {
+   console.log("Employee was added to employees");
+});
+
+/* Fetch list of all employees from server */
+employees.fetch(); // Sends HTTP request - GET '/employees'
+						</code></pre>
+				</section>
+
+				<section>
+					<h2>Backbone.js - View</h2>
+					<ul>
+						<li>Responsible for rendering, updating, and event handling on a section of the DOM</li>
+						<li>Associated with a model or collection (can bind to events)</li>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var EmployeeListView = Backbone.View.extend({
+    events : {
+    	"click li" : "triggerEmployeeClickedMsg" // View event binding
+    },
+    initialize : function() {
+        this.listenTo(this.collection, 'reset', this.render);
+    },
+    render : function() {
+        var thisView = this; // Store view context in thisView
+
+        thisView.$el.empty(); // Clear the existing list
+
+        // Add each employee to the list		
+        _.each(thisView.collection.models, function(employee) {
+            var employeeListing = "<li>" + employee.get('name') + "</li>";
+            thisView.$el.append(employeeListing);
+        });
+    },
+    triggerEmployeeClickedMsg : function() {
+    	alert("Employee listing was clicked!");
+    }
+});
+
+/* Create instance of EmployeeListView */
+var employeeListView = new EmployeeListView({
+	el : 'ul#employeeList' // DOM element that view will correspond to
+});
+						</code></pre>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Backbone.js - Router</h2>
+					<ul>
+						<li>Serialize application state from browser URL structure</li>
+						<li>Triggers functions when patterns matches browser URL</li>
+						<li>Prevents reload request to server-side</li>
+						<li>Delegates to hash routing if HTML5 History API not available</li>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var AppRouter = Backbone.Router.extend({
+	routes : {
+           "user/:id" : "user", // Matches '/user/1' for History API or '#/user/1' for hash routing
+           "about" : "about" // Matches '/about' for History API or '#/about' for hash routing
+	},
+
+	user : function(id) {
+           loadUserPage(id);
+	},
+
+	about: function() {
+           loadAboutPage();
+	}
+});
+						</code></pre>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Lab Time - Backbone.js</h2>
+					<a href="">Click to begin lab</a>
+				</section>
+
+				<section>
+					<h2>Backbone.js - Pros</h2>
+					<ul>
+						<li>Provides basic structure for client-side code</li>
+						<li>Highly customizable</li>
+						<li>Extension Frameworks:
+							<ul>
+								<li><a href="http://marionettejs.com/">Backbone Marionette</a></li>
+								<li><a href="http://chaplinjs.org/">Chaplin</a></li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Backbone.js - Cons</h2>
+					<h4>Developer is responsible for:</h4>
+					<ul>
+						<li>Dereferencing unused objects</li>
+						<li>Cleaning up event bindings</li>
+						<li>Keeping view and data models synchronized (boilerplate code)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Angular.js</h2>
+					<ul>
+						<li>Created by Google</li>
+						<li>Automatically synchronizes view with data model (two-way data binding)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Angular.js - Template</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+&lt!doctype html&gt
+&lthtml ng-app&gt
+  &lthead&gt
+    &ltscript src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"&gt&lt/script&gt
+  &lt/head&gt
+  &ltbody ng-controller="UsersCtrl"&gt
+   &ltul&gt
+  	  &ltli ng-repeat="user in users"&gt
+  	    &ltdiv class="name"&gt{{ user.name }}&lt/div&gt
+  	    &ltdiv class="email"&gt{{ user.email }}&lt/div&gt
+  	  &lt/li&gt
+   &lt/ul&gt
+  &lt/body&gt
+&lt/html&gt
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Angular.js - Controller</h2>
+					<ul>
+						<li>Responsible for application logic</li>
+						<li>Attach properties to $scope object</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function UsersCtrl($scope, Users) {
+   $scope.users = Users.query();
+}															
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Angular.js - Resource</h2>
+					<ul>
+						<li>Allows user to interact with with server-side resources via REST</li>
+						<li>Injected into a controller as a 'service'</li>
+						<li>Can be extended if need be</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+$resource('/users');
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Lab Time - Angular.js</h2>
+					<a href="">Click to begin lab</a>
+				</section>
+
+				<section>
+					<h2>Angular.js - Pros</h2>
+					<ul>
+						<li>Template Filters</li>
+						<li>HTML Directives (HTML tags with customizable behavior)</li>
+						<li>Dependecy Injection</li>
+						<li>Naturally supports unit testing</li>
+						<li>Less boilerplate code = smaller JS code base!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Angular.js - Cons</h2>
+					<p>Steep learning curve!</p>
+				</section>
+
+				<section>
+					<h2>Test Driven Development</h2>
+					<ul>
+						<li>Write a failing test - given an this input, I expect this output</li>
+						<li>Implement functionality to pass the test</li>
+						<li>Tests serve as 'blueprint' for functionality</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Test Driven Development</h2>
+					<ul><h4>Pros:</h4>
+						<li>Clearly defined interfaces</li>
+						<li>Fewer bugs</li>
+						<li>Faster development time</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Test Driven Development</h2>					
+					<ul><h4>Popular Testing Frameworks:</h4>
+						<li><a href="http://pivotal.github.io/jasmine/">Jasmine BDD</a></li>
+						<li><a href="http://visionmedia.github.io/mocha/">Mocha</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Module Loading</h2>
+					<ul>
+						<li>Problem: All code stored in a single file (typically called app.js)</li>
+						<li>Can leads to global namespace conflicts</li>
+						<li>Difficult to test individual components of codebase</li>
+						<li>Becomes tough to read code!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Module Loading</h2>
+					<ul>
+						<li>Soltuon: Separate code into individual files - modules</li>
+						<li>Improves testability and performance</li>
+						<li>Popular implementations:
+							<ul>
+								<li><a href="http://requirejs.org/">Require.js</a></li>
+								<li><a href="http://wiki.commonjs.org/wiki/CommonJS">CommonJS</a></li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>CoffeeScript</h2>
+					<ul>
+						<li>Alternative syntax that compiles down into JavaScript</li>
+						<li>Includes cool features such as:
+							<ul>
+								<li>more verbose, English-like syntax</li>
+								<li>default parameter assignment</li>
+								<li>O.O.P. class structure</li>
+							</ul>
+						<li><a href="http://coffeescript.org/">Click here to read more</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>JavaScript on the Server-side - Node.js</h2>
+					<ul>
+						<li>Runs on the V8 JavaScript engine - same as Chrome</li>
+						<li>Non-blocking I/O via callbacks</li>
+						<li>Persistant communication channel between clients and server</li>
+					</ul>
+				</section>
+				
+				<!-- Course content ENDS here -->
+
+				<section>
+					<h2>Course Overview</h2>
+					<ul></ul>
+				</section>
+
+				<section>
+					<h2>About the Textbook</h2>
+					<img id="textBookCover" src="img/goodPartsCover.png"></img>
+					<ul id="textBookDescription">
+						<li>By Douglas Crockford (the father of JSON)</li>
+						<li>Discusses the "good" and "bad" parts of JS</li>
+						<li>Describes best practices for writing clean, maintainable JS</li>
+						<li>A must read for anyone writing lots of JS!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Additional Resources</h2>
+					<ul></ul>
+				</section>
+
+				<section>
+					<h2>Thank You!</h2>
+					<ul>
+						<li>Ivan Ramiscal</li>
+						<li>You all for partipating in this class!</li>
+					</ul>
+				</section>
+
+				<!-- Example slides -->
+
+				<section>
+					<h2>Heads Up</h2>
+					<p>
+						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
+						support for CSS 3D transforms to see it in its full glory.
+					</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Vertical Slides</h2>
+						<p>
+							Slides can be nested inside of other slides,
+							try pressing <a href="#" class="navigate-down">down</a>.
+						</p>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Basement Level 1</h2>
+						<p>Press down or up to navigate.</p>
+					</section>
+					<section>
+						<h2>Basement Level 2</h2>
+						<p>Cornify</p>
+						<a class="test" href="http://cornify.com">
+							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
+						</a>
+					</section>
+					<section>
+						<h2>Basement Level 3</h2>
+						<p>That's it, time to go back up.</p>
+						<a href="#/2" class="image">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
+
+				<section>
+					<h2>Slides</h2>
+					<p>
+						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Point of View</h2>
+					<p>
+						Press <strong>ESC</strong> to enter the slide overview.
+					</p>
+					<p>
+						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
+					</p>
+				</section>
+
+				<section>
+					<h2>Works in Mobile Safari</h2>
+					<p>
+						Try it out! You can swipe through the slides and pinch your way to the overview.
+					</p>
+				</section>
+
+				<section>
+					<h2>Marvelous Unordered List</h2>
+					<ul>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  For those of you who like that sort of thing.
+						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+					</script>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=cube#/transitions">Cube</a> -
+						<a href="?transition=page#/transitions">Page</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a> -
+						<a href="?transition=linear#/transitions">Linear</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?#/transitions">Default</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						Reveal.js comes with a few themes built in: <br>
+						<a href="?theme=sky#/themes">Sky</a> -
+						<a href="?theme=beige#/themes">Beige</a> -
+						<a href="?theme=simple#/themes">Simple</a> -
+						<a href="?theme=serif#/themes">Serif</a> -
+						<a href="?theme=night#/themes">Night</a> -
+						<a href="?#/themes">Default</a>
+					</p>
+					<p>
+						<small>
+							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
+						</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Global State</h2>
+					<p>
+						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+						will be added as a class to the document element when the slide is open. This lets you
+						apply broader style changes, like switching the background.
+					</p>
+				</section>
+
+				<section data-state="customevent">
+					<h2>Custom Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
+
+				<section>
+					<section data-background="#007777">
+						<h2>Slide Backgrounds</h2>
+						<p>
+							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
+						</p>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
+						<h2>Image Backgrounds</h2>
+						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
+						<h2>Repeated Image Backgrounds</h2>
+						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+					</section>
+				</section>
+
+				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
+					<h2>Background Transitions</h2>
+					<p>
+						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
+					</p>
+				</section>
+
+				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
+					<h2>Background Transition Override</h2>
+					<p>
+						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) ) {
+        node.className += ' roll';
+      }
+    };
+  }
+}
+					</code></pre>
+					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Fragmented Views</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<ol>
+							<li class="fragment"><code>any type</code></li>
+							<li class="fragment"><em>of view</em></li>
+							<li class="fragment"><strong>fragments</strong></li>
+						</ol>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's a few styles of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment roll-in">roll-in</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment highlight-red">highlight-red</p>
+						<p class="fragment highlight-green">highlight-green</p>
+						<p class="fragment highlight-blue">highlight-blue</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Spectacular image!</h2>
+					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
+						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
+					</a>
+				</section>
+
+				<section>
+					<h2>Export to PDF</h2>
+					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
+					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+					<script>
+						document.getElementById('slideshare').attributeName = 'allowfullscreen';
+					</script>
+				</section>
+
+				<section>
+					<h2>Take a Moment</h2>
+					<p>
+						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
+						during a presentation.
+					</p>
+				</section>
+
+				<section>
+					<h2>Stellar Links</h2>
+					<ul>
+						<li><a href="http://slid.es">Try the online editor</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
+						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h3>BY Hakim El Hattab / hakim.se</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

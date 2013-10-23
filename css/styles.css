@@ -1,0 +1,11 @@
+.custom-highlight-purple {
+	color: rgb(56, 56, 255);
+}
+#textBookCover {
+	float: left;
+	height: 500px;
+}
+#textBookDescription {
+	display: block;
+	margin-left: 13em;
+}

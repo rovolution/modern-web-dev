@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lab 1 - JavaScript Review</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/labs.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Begin page content -->
+      <div class="container">
+        <div class="page-header">
+          <h1>Lab 1 - JavaScript Review</h1>
+        </div>
+        <p class="lead">
+        For the following exercises, we will be using Repl.it, an online JavaScript editor. <a href="http://repl.it/languages/JavaScript" target="_blank">Click here to launch it in another tab.</a></br>
+        </br>
+        To execute code in Repl.it, type your code on the left hand side and then hover over it until the arrow appears. Click the arrow and view the output on the right hand side.</br>
+        </br>
+        Read the question, answer it using Repl.it, and then click the "View Answer" button to compare your answer to the solution.</br>
+        </br>
+        Whenever a question asks you to "print" something, use console.log()</br>
+        </br>
+        Try to resist the temptation to view the answer before completing the question!</br>
+        </br>
+        Feel free to use the following resources for additonal help</br>
+        <ul>
+          <li><a href="http://www.w3schools.com/js/default.asp" target="_blank">W3 Schools</a></li>
+          <li><a href="http://api.jquery.com/" target="_blank">JQuery Documentation Page</a></li>
+        </ul>
+        </p>
+        <ol class="question-list">
+          <li class="question">
+            <p>
+            Create an object called <strong>employee</strong> that consists of three properties:
+            <ul>
+              <li>name</li>
+              <li>age</li>
+              <li>title</li>
+            </ul>
+            <em>name</em> should be of type string, <em>age</em> should be of type number, and <em>title</em> should be of type string.
+            </p>
+            <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+          </li>
+          <li class="question">
+            <p>
+            Add a function to user called <strong>printInfo</strong> that prints the employee's information to the console, formatted like so:
+            </p>
+            <p class="help-block">"Name: {name} - Age: {age} - Job Title: {title}"</p>
+            <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+          </li>
+          <li class="question">
+            <p>
+            Create a subclass of employee called <strong>Manager</strong>. When an instance of Manager is created, it should:
+            <ul>
+              <li>automatically set the employee's title to "Manager"</li>
+              <li>add a property called "managementLevel" to the employee, and initialize it to -1</li>
+              <li>add a method called "printManagementLevel", that prints the message formatted like so:
+                <p class="help-block">"{name}'s is a Level: {managementLevel} Manager"</p>
+              </li>
+            </ul>
+            Then create instance of Manager, set its "managementLevel" to 10, and call its "printManagementLevel" method.
+            </p>
+          </li>
+          <!-- <li class="question"></li> -->
+        </div>
+      </ol>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">Modern Web Development with JavaScript - <span class='black-text'>&copy Rohit Kalkur</span></p>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
