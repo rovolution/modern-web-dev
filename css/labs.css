@@ -31,8 +31,9 @@ body {
 
 .container {
   width: auto;
-  max-width: 680px;
+  max-width: 90%;
   padding: 0 15px;
+  height: 100%;
 }
 .container .credit {
   margin: 20px 0;
@@ -42,6 +43,11 @@ body {
 -------------------------------------------------- */
 body {
   background-color: rgb(224, 224, 224);
+}
+
+.js-editor {
+  height: 250px;
+  font-family: monospace;
 }
 
 .black {
@@ -67,6 +73,6 @@ body {
 .question {
   background-color: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 7px;
   margin-bottom: 30px;
 }

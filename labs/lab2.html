@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lab 2 - Client-Server Interaction</title>
+    <title>Lab 2 - Client-Server Interaction with DOM Manipulation</title>
 
     <!-- Bootstrap core CSS -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -19,129 +19,104 @@
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css" media="screen">
+      #labWorkspace {
+        padding: 20px;
+      }
+    </style>
   </head>
 
   <body>
 
     <!-- Wrap all page content here -->
     <div id="wrap">
-
       <!-- Begin page content -->
       <div class="container">
-        <div class="page-header">
-          <h1>Lab 1 - JavaScript Review</h1>
+      <div class="row"> 
+        <div class="col-xs-6">
+          <div class="page-header">
+            <h1>Lab 2 - Client-Server Interaction with DOM Manipulation</h1>
+          </div>
+          <p class="lead">
+            For the following exercises, we will be using an inline editor and manipulating DOM elements on this page. 
+            The editor and DOM region are located on the right-hand side of this page.</br>
+            Write your code in the editor, and press the "Run" button to execute the code.</br>
+            </br>
+            Whenever a question asks you to "print" something, use console.log()</br>
+            To see the output, right-click on your browser window, select "Inspect Element", and navigate to the "Console" tab to view the output.</br>
+            </br>
+            Try to resist the temptation to view the answer before completing the question!</br>
+            </br>
+            Feel free to use the following resources for additonal help:</br>
+            <a href="http://api.jquery.com/jQuery.ajax/" target="_blank">-JQuery ajax() documentation page</a></br>
+            </br>
+            To execute an AJAX Request in JavaScript, use JQuery's ajax() method.</br>
+            </br>
+            We will be running our own local version of the REST API (built on Node.js)</br>
+            </br>
+            TODO: Instructions for how to install node dependencies</br>
+            TODO: Instructions for how to run the server</br>
+            </br>
+            The base URL for the REST API we will be using is <a href="http://localhost:3000/api">http://localhost:3000/api</a></br>
+            </br>
+            </br>
+            For example, to retrieve a list of shapes you would write the following code:</br>
+            <pre><code>
+            $.ajax({ </br>
+                url : "http://localhost:3000/api/shapes",</br>
+                method : 'GET',</br>
+                success : function(response) {</br>
+                  var shapes = response.data;</br>
+                  shapes.forEach(function(shape) {</br>
+                    console.log(shape.name); // Output: "Triangle"</br>
+                    console.log(shape.numSides); // Output: 3</br>
+                  })</br>
+                }</br>
+            });</br>
+            </code></pre>
+            </br>
+            <p class="lead">
+              For example, to retrieve the shape with id = 1, you would write the following code:</br>
+              <pre><code>
+              $.ajax({ </br>
+                  url : "http://localhost:3000/api/shapes/1",</br>
+                  method : 'GET',</br>
+                  success : function(response) {</br>
+                    var shape = response.data;</br>
+                    console.log(shape.name); // Output: "Triangle"</br>
+                    console.log(shape.numSides); // Output: 3</br>
+                  }</br>
+              });</br>
+              </code></pre>
+            </p>
+          </p>
+          <ol class="question-list">
+            <li class="question">
+              <p>Write an HTTP GET request to retrieve the list of employees.</p>
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+
+            <li class="question">
+              <p>Write an HTTP PUT request to update the <em>age</em> property to 25 on the user with ID#2.</p>
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+
+            <li class="question">
+              <p>Write an HTTP DELETE request to update the <em>age</em> property to 25 on the user with ID#2.</p>
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>            
+            </li>
+          </ol> 
+        </div> <!-- End of questionsSection -->
+        <div class="col-xs-6">
+          <div id="labWorkspace">
+            <h3>Lab Workspace</h3>
+            <div id="editor" class="js-editor"></div>
+            <div id="employeeList"></div>
+          <div>
         </div>
-        <p class="lead">
-        For the following exercises, we will be using Repl.it, an online JavaScript editor. <a href="http://repl.it/languages/JavaScript" target="_blank">Click here to launch it in another tab.</a></br>
-        </br>
-        To execute code in Repl.it, type your code on the left hand side and then hover over it until the arrow appears. Click the arrow and view the output on the right hand side.</br>
-        </br>
-        Read the question, answer it using Repl.it, and then click the "View Answer" button to compare your answer to the solution.</br>
-        </br>
-        Whenever a question asks you to "print" something, use console.log()</br>
-        </br>
-        Try to resist the temptation to view the answer before completing the question!</br>
-        </br>
-        Feel free to use the following resources for additonal help:</br>
-        <ul>
-          <li><a href="http://www.w3schools.com/js/default.asp" target="_blank">W3 Schools</a></li>
-          <li><a href="http://api.jquery.com/" target="_blank">JQuery Documentation Page</a></li>
-        </ul>
-        </p>
-        <ol class="question-list">
-          <li class="question">
-            <p>
-            Create an object called <strong>employee</strong> that consists of three properties:
-            <ul>
-              <li>name</li>
-              <li>age</li>
-              <li>title</li>
-            </ul>
-            <em>name</em> should be of type string, <em>age</em> should be of type number, and <em>title</em> should be of type string.
-            </p>
-            <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
-          </li>
-          <li class="question">
-            <p>
-            Add a function to employee called <strong>printInfo()</strong> that prints the employee's information to the console, formatted like so:
-            </p>
-            <p class="help-block">"Name: {name} - Age: {age} - Job Title: {title}"</p>
-            <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
-          </li>
-          <li class="question">
-            <p>
-            Create a subclass of employee called <strong>Manager</strong>. When an instance of Manager is created it should:
-            <ul>
-              <li>Automatically set the employee's title to "Manager"</li>
-              <li>Add a property called <em>managementLevel</em> to the employee, and initialize it to -1</li>
-              <li>Add a method called <strong>printManagementLevel()</strong> that prints a message formatted like so:
-                <p class="help-block">"{name}'s is a Level: {managementLevel} Manager"</p>
-              </li>
-              <li>
-                Add a method called <strong>setManagementLevel()</strong>, that takes a single argument and sets it as the <em>managementLevel</em>.</br>
-                The method must check to see if the argument is a number. If not, it should throw an exception with the following message:</br>
-                <p class="red">"Argument for new managementLevel is not valid"</p>
-              </li>
-            </ul>
-            <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
-            </p>
-          </li>
-          <li class="question">
-            Create an instance of Manager, set its <em>managementLevel</em> to 10, and call its <em>printManagementLevel</em> method.</br>
-            </br>
-            Now try to call its <em>setManagementLevel()</em> method with a non-numeric value.</br>
-            <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
-          </li>
-          <li class="question">
-            <p>
-            Create a subclass of employee called <strong>Engineer</strong>. When an instance of Engineer is created, it should:
-            <ul>
-              <li>
-                Have an Array property called <strong>projects</strong>.
-              </li>
-              <li>
-                Have a method called <strong>addProject()</strong> that takes an object with the following properties:</li>
-                <ul>
-                  <li>name</li>
-                  <li>isActive</li>
-                  <li>language</li>
-                </ul>
-                </br>
-                And adds it to the <em>projects</em> array.</br>
-                </br>
-                For each property of the object that is passed in, write a validation method. </br>
-                </br>
-                If the property is valid, return true.</br>
-                If it is invalid, throw an exception.</br>
-                </br>
-                Here are the rules for each property:</br>
-                <ul>
-                  <li>name - Must be of type string</li>
-                  <li>status - Must be of type boolean</li>
-                  <li>language - Must be of type string and can only be one of the following: "JavaScript", "LISP", "C", "C++", or "Java"</li>
-                </ul>
-                </br>
-                Scope the validation methods so that they cannot be called from anywhere other than the addProject() method.</br>
-                Define the validation methods so that they are at the very end of the <em>addProject()</em> method definition (They should automatically be hoisted by the JS compiler).</br>
-              </li>
-            </ul>
-            <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
-            </p>
-          </li>
-          <li class="question">
-            The following exercise is designed to familiarize you with the JQuery selector syntax. Complete the exercise in <a href="http://jsfiddle.net/rovolution/FRMtz/" target="_blank">this JSFiddle</a>.</br>
-            </br>
-            Each of the <em>&ltdiv&gt&lt\div&gt</em> elements wants to be assigned a color or have an event binded to it. Use JQuery to select the elements and give them their desired features.</br>
-            </br>
-            Refer to <a href="http://www.w3schools.com/jquery/jquery_ref_selectors.asp" target="_blank">this JQuery selector syntax guide</a> for guidance.</br>
-            </br>
-            Example: To make the text within all the <em>&ltli&gt&lt\li&gt</em> elements red, you would write the following line of JQuery:</br>
-            <code>$("li").css("color", "red");</code>
-            <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
-          </li>
-        </div>
-      </ol>
-    </div>
+        </div> <!-- End of row -->
+      </div> <!-- End of container -->
+    </div>  <!-- End of wrap -->
 
     <div id="footer">
       <div class="container">
@@ -154,5 +129,30 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://ajaxorg.github.com/ace-builds/src/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      /* Editor Options */
+      var twilightTheme = "ace/theme/twilight",
+          mode = "ace/mode/javascript";
+
+      // /* Create and Set-up Editors */
+      var editor = ace.edit("editor");
+      editor.setTheme(twilightTheme);
+      editor.getSession().setMode(mode);
+      editor.getSession().setUseSoftTabs(false);
+      editor.getSession().setTabSize(4);
+
+      // var editor2 = ace.edit("editor2");
+      // editor2.setTheme(twilightTheme);
+      // editor2.getSession().setMode(mode);
+      // editor2.getSession().setUseSoftTabs(false);
+      // editor2.getSession().setTabSize(4);
+
+      // var editor3 = ace.edit("editor3");
+      // editor3.setTheme(twilightTheme);
+      // editor3.getSession().setMode(mode);
+      // editor3.getSession().setUseSoftTabs(false);
+      // editor3.getSession().setTabSize(4);
+    </script>
   </body>
 </html>
