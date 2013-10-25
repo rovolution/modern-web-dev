@@ -32,8 +32,6 @@
     <div id="wrap">
       <!-- Begin page content -->
       <div class="container">
-      <div class="row"> 
-        <div class="col-xs-6">
           <div class="page-header">
             <h1>Lab 2 - Client-Server Interaction with DOM Manipulation</h1>
           </div>
@@ -92,29 +90,31 @@
           </p>
           <ol class="question-list">
             <li class="question">
-              <p>Write an HTTP GET request to retrieve the list of employees.</p>
+              <p>Write an HTTP GET request to retrieve the list of employees and populate the table.</p>
+              <p>The list of employees is retrieved at the API route <strong>/employees</strong></p>
               <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
             </li>
 
             <li class="question">
-              <p>Write an HTTP PUT request to update the <em>age</em> property to 25 on the user with ID#2.</p>
+              <p>If you glance below the table, you will see a form called "Add New Employee". This is used to add new employees to the table.</p>
+              <p>Right now, if you click on the "Add" button, nothing will happen</p>
+              <p>Implement the functionality so that when the user fills out the form and clicks "Add" the new user will be added to the database, and then the entry will be shown on the table.</br>
+                Hints:</br>
+                <ul>
+                  <li>Use the JQuery <em>.click()</em> method to bind to a button's 'click' event</li>
+                  <li>Use the JQuery <em>.val()</em> function to extract the value of a form input element</li>
+                  <li>Your code must make an HTTP POST request to the <strong>/employees</strong> route with the parameters</li>
+                  <li>You must wait on the response from the server before appending the user entry to table</li>
+                  <li><!-- TODO: Add in section about underscore templating --></li>
+                </ul>
+              </p>
               <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
             </li>
 
             <li class="question">
-              <p>Write an HTTP DELETE request to update the <em>age</em> property to 25 on the user with ID#2.</p>
-              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>            
+              <p>Write an HTTP DELETE request</p>        
             </li>
-          </ol> 
-        </div> <!-- End of questionsSection -->
-        <div class="col-xs-6">
-          <div id="labWorkspace">
-            <h3>Lab Workspace</h3>
-            <div id="editor" class="js-editor"></div>
-            <div id="employeeList"></div>
-          <div>
-        </div>
-        </div> <!-- End of row -->
+          </ol>
       </div> <!-- End of container -->
     </div>  <!-- End of wrap -->
 
