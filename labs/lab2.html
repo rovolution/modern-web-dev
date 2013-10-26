@@ -97,15 +97,15 @@
 
             <li class="question">
               <p>If you glance below the table, you will see a form called "Add New Employee". This is used to add new employees to the table.</p>
-              <p>Right now, if you click on the "Add" button, nothing will happen</p>
-              <p>Implement the functionality so that when the user fills out the form and clicks "Add" the new user will be added to the database, and then the entry will be shown on the table.</br>
+              <p>Right now, if you click on the "Add" button, nothing will happen.</p>
+              <p>Implement the functionality so that when the user fills out the form and clicks "Add" the new user will be added to the database via the REST API, and a new row will be added to the table.</br>
+                </br>
                 Hints:</br>
                 <ul>
                   <li>Use the JQuery <em>.click()</em> method to bind to a button's 'click' event</li>
                   <li>Use the JQuery <em>.val()</em> function to extract the value of a form input element</li>
                   <li>Your code must make an HTTP POST request to the <strong>/employees</strong> route with the parameters</li>
-                  <li>You must wait on the response from the server before appending the user entry to table</li>
-                  <li><!-- TODO: Add in section about underscore templating --></li>
+                  <li>You must wait on the response from the server before appending the user entry row to table</li>                  
                 </ul>
               </p>
               <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>

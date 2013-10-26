@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Modern Web Dev. - Lab 2 Workspace</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Modern Web Dev. - Lab 2 Workspace</h1>
+    <div>
+   		<h3>Employee List</h3>
+   		<button id="getAllEmployees">Get All Employees</button>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Rank</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody id="employeeTableBody">
+          <tr>
+            <td>{{ id }}</td>
+            <td>{{ name }}</td>
+            <td>{{ email }}</td>
+            <td>{{ rank }}</td>
+            <td>{{ title }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Load JS Dependencies -->
+    <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/lab2/main.js"></script>
+  </body>
+</html>
