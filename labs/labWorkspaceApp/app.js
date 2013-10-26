@@ -44,7 +44,7 @@ app.get('/lab2', lab2Routes.index);
 app.get('/employees', employees.query);
 app.get('/employees/:id', employees.get);
 app.put('/employees/:id', employees.update);
-app.post('/employees/:id', employees.create);
+app.post('/employees', employees.create);
 app.delete('/employees/:id', employees.delete);
 
 http.createServer(app).listen(app.get('port'), function() {

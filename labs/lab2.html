@@ -36,53 +36,67 @@
             <h1>Lab 2 - Client-Server Interaction with DOM Manipulation</h1>
           </div>
           <p class="lead">
-            For the following exercises, we will be using an inline editor and manipulating DOM elements on this page. 
-            The editor and DOM region are located on the right-hand side of this page.</br>
-            Write your code in the editor, and press the "Run" button to execute the code.</br>
+            For the following exercises, we will be running a web application using a REST API (Powered by <a href="http://nodejs.org/">Node.js</a> and <a href="http://www.mongodb.org/">MongoDB</a>).</br>
+            Download the web application <a href="">here</a> and unzip the file.</br>
+            To kickstart the application, open an instance of Command Prompt, navigate to the unzipped directory, and run the setup.bat script.</br>
+            Once the application is running, Lab 2 will be located at <a href="http://localhost:3000/lab2" target="_blank">this url</a>.</br>
+            Open your Notepad++ editor and open up the unzipped directory.</br>
+            For this lab, you will be working with the files:</br>
+            </br> 
+            -views/lab2.ejs (which contains your HTML)</br>
+            -public/javascripts/main.js (which is where you will write your JavaScript code)</br>
+
             </br>
-            Whenever a question asks you to "print" something, use console.log()</br>
-            To see the output, right-click on your browser window, select "Inspect Element", and navigate to the "Console" tab to view the output.</br>
+            To see the output of console.log() statements in the Debugger console, right-click on your browser window, select "Inspect Element" which will open the Developer Tools window, and navigate to the "Console" tab to view the output. Feel free to use this a means of debugging. You can also go to the "Elements" tab in the Developer Tools window to examine the current layout of your DOM.</br>
             </br>
             Try to resist the temptation to view the answer before completing the question!</br>
             </br>
             Feel free to use the following resources for additonal help:</br>
             <a href="http://api.jquery.com/jQuery.ajax/" target="_blank">-JQuery ajax() documentation page</a></br>
+            <a href="http://api.jquery.com/submit/" target="_blank">-JQuery submit() documentation page</a></br>
+            <a href="http://api.jquery.com/val/" target="_blank">-JQuery val() documentation page</a></br>
             </br>
-            To execute an AJAX Request in JavaScript, use JQuery's ajax() method.</br>
-            </br>
-            We will be running our own local version of the REST API (built on Node.js)</br>
-            </br>
-            TODO: Instructions for how to install node dependencies</br>
-            TODO: Instructions for how to run the server</br>
-            </br>
-            The base URL for the REST API we will be using is <a href="http://localhost:3000/api">http://localhost:3000/api</a></br>
-            </br>
-            </br>
-            For example, to retrieve a list of shapes you would write the following code:</br>
+            Example: To retrieve a list of shapes you would write the following code:</br>
             <pre><code>
-            $.ajax({ </br>
-                url : "http://localhost:3000/api/shapes",</br>
-                method : 'GET',</br>
-                success : function(response) {</br>
-                  var shapes = response.data;</br>
-                  shapes.forEach(function(shape) {</br>
-                    console.log(shape.name); // Output: "Triangle"</br>
-                    console.log(shape.numSides); // Output: 3</br>
+            $.ajax({
+                url : "http://localhost:3000/api/shapes",
+                method : 'GET',
+                success : function(shapes) {
+                  shapes.forEach(function(shape) {
+                    console.log(shape.name); // Output: "Triangle"
+                    console.log(shape.numSides); // Output: 3
                   })</br>
                 }</br>
             });</br>
             </code></pre>
             </br>
             <p class="lead">
-              For example, to retrieve the shape with id = 1, you would write the following code:</br>
+              Example: To retrieve the shape with id = 1, you would write the following code:</br>
               <pre><code>
-              $.ajax({ </br>
-                  url : "http://localhost:3000/api/shapes/1",</br>
-                  method : 'GET',</br>
-                  success : function(response) {</br>
-                    var shape = response.data;</br>
-                    console.log(shape.name); // Output: "Triangle"</br>
-                    console.log(shape.numSides); // Output: 3</br>
+              $.ajax({
+                  url : "http://localhost:3000/api/shapes/1",
+                  method : 'GET',
+                  success : function(shape) {
+                    console.log(shape.name); // Output: "Triangle"
+                    console.log(shape.numSides); // Output: 3
+                  }</br>
+              });</br>
+              </code></pre>
+            </p>
+            <p class="lead">
+              Example: To create a shape with "name" = "Circle" and "numSides" = 1, you would write the following code:</br>
+              <pre><code>
+              $.ajax({ 
+                  url : "http://localhost:3000/api/shapes",
+                  method : 'POST',
+                  data: {
+                    "name" : "Circle",
+                    "numSides" : 1
+                  },
+                  success : function(shape) {
+                    console.log(shape._id) // Output: "526b4b16399a1a1e51000001"
+                    console.log(shape.name); // Output: "Circle"
+                    console.log(shape.numSides); // Output: 1
                   }</br>
               });</br>
               </code></pre>
@@ -92,27 +106,43 @@
             <li class="question">
               <p>Write an HTTP GET request to retrieve the list of employees and populate the table.</p>
               <p>The list of employees is retrieved at the API route <strong>/employees</strong></p>
-              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
-            </li>
-
-            <li class="question">
-              <p>If you glance below the table, you will see a form called "Add New Employee". This is used to add new employees to the table.</p>
-              <p>Right now, if you click on the "Add" button, nothing will happen.</p>
-              <p>Implement the functionality so that when the user fills out the form and clicks "Add" the new user will be added to the database via the REST API, and a new row will be added to the table.</br>
-                </br>
-                Hints:</br>
+              <p>
+               Hints:</br>
                 <ul>
-                  <li>Use the JQuery <em>.click()</em> method to bind to a button's 'click' event</li>
-                  <li>Use the JQuery <em>.val()</em> function to extract the value of a form input element</li>
-                  <li>Your code must make an HTTP POST request to the <strong>/employees</strong> route with the parameters</li>
-                  <li>You must wait on the response from the server before appending the user entry row to table</li>                  
+                  <li>Use the JQuery <em>.append()</em> function to append a new row to the table body (tbody). Remember to add in the <em>&lttr&gt</em> and <em>&lttd&gt</em> tags to your string!</li>
+                 <li>
+                  You can see the response you will receive from a GET request by inputting the REST API route by navigating to it in your browser.</br>
+                  For example, navigate to <a href="http://localhost:3000/employees">http://localhost:3000/employees</a> in your browser to see the JSON formatted list of employees.</br>
+                 </li>
+                 <li>
+                  After you type your code, refresh your browser to see the results. Writing client-side code typically involves frequent browser refreshing.
+                 </li>
                 </ul>
               </p>
               <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
             </li>
 
             <li class="question">
-              <p>Write an HTTP DELETE request</p>        
+              <p>If you glance below the table, you will see a form titled "Add New Employee". This is used to add new employees to the table.</p>
+              <p>Right now, if you click on the "Add" button, nothing will happen.</p>
+              <p>Implement the functionality so that when the user fills out the form and clicks "Add" the new user will be added to the database via the REST API, and a new row will be added to the table.</br>
+                Hints:</br>
+                <ul>
+                  <li>Use the JQuery <em>.submit()</em> method to bind to the form's 'submit' event. This event is triggered when the "Add" btn is clicked. </li>
+                  <li>When binding a JQuery listener to an element's event, always remember to disable the default event in the callback function by calling <em>e.preventDefault()</em></li>
+                  <li>Use the JQuery <em>.val()</em> function to extract the value of a form input element.</li>
+                  <li>Your code must make an HTTP POST request to the <strong>/employees</strong> route with the following data parameters: <em>name, email, rank, title</em></li>
+                  <li>You must wait on the response from the server before appending the user entry to the table.</li>
+                </ul>
+              </p>
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+
+            <li class="question">
+              <p>At the bottom of the page, you will notice another form titled "Delete Employee".</p>
+              <p>This takes an employee ID, and when the "Delete" button is clicked (which trigger's the deleteEmployeeForm's 'submit' event), it should remove the user with that id from the database.</p>
+              <p>The table data should then be updated to show only the existing employees.</p>
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
             </li>
           </ol>
       </div> <!-- End of container -->
@@ -124,35 +154,5 @@
       </div>
     </div>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="http://ajaxorg.github.com/ace-builds/src/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-      /* Editor Options */
-      var twilightTheme = "ace/theme/twilight",
-          mode = "ace/mode/javascript";
-
-      // /* Create and Set-up Editors */
-      var editor = ace.edit("editor");
-      editor.setTheme(twilightTheme);
-      editor.getSession().setMode(mode);
-      editor.getSession().setUseSoftTabs(false);
-      editor.getSession().setTabSize(4);
-
-      // var editor2 = ace.edit("editor2");
-      // editor2.setTheme(twilightTheme);
-      // editor2.getSession().setMode(mode);
-      // editor2.getSession().setUseSoftTabs(false);
-      // editor2.getSession().setTabSize(4);
-
-      // var editor3 = ace.edit("editor3");
-      // editor3.setTheme(twilightTheme);
-      // editor3.getSession().setMode(mode);
-      // editor3.getSession().setUseSoftTabs(false);
-      // editor3.getSession().setTabSize(4);
-    </script>
   </body>
 </html>

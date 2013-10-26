@@ -3,13 +3,17 @@
   <head>
     <title>Modern Web Dev. - Lab 2 Workspace</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style type="text/css">
+      #addEmployeeForm {
+        margin: 50px 0px;
+      }
+    </style>
   </head>
   <body>
     <h1>Modern Web Dev. - Lab 2 Workspace</h1>
     <div>
    		<h3>Employee List</h3>
-   		<button id="getAllEmployees">Get All Employees</button>
-      <table>
+      <table border="1">
         <thead>
           <tr>
             <th>ID</th>
@@ -20,15 +24,37 @@
           </tr>
         </thead>
         <tbody id="employeeTableBody">
+          <!-- Example Row -->
+          <!-- 
           <tr>
-            <td>{{ id }}</td>
-            <td>{{ name }}</td>
-            <td>{{ email }}</td>
-            <td>{{ rank }}</td>
-            <td>{{ title }}</td>
-          </tr>
+            <td>_id</td>
+            <td>name</td>
+            <td>email</td>
+            <td>rank</td>
+            <td>title</td>
+          </tr> 
+          -->
         </tbody>
       </table>
+      <form id="addEmployeeForm">
+        <h3>Add New Employee</h3>
+        <label for="newName">Name:</label>
+        <input id="newName" type="text"></input>
+        <label for="newEmail">Email:</label>
+        <input id="newEmail" type="email"></input>
+        <label for="newRank">Rank:</label>
+        <input id="newRank" min="1" type="number"></input>
+        <label for="newTitle">Title:</label>
+        <input id="newTitle" type="text"></input>
+        <button type="submit">Add</button>
+      </form>
+
+      <form id="deleteEmployeeForm">
+        <h3>Delete Employee</h3>
+        <label for="userIdToDelete">ID:</label>
+        <input id="userIdToDelete" type="text"></input>
+        <button type="submit">Delete</button>
+      </form>
     </div>
     <!-- Load JS Dependencies -->
     <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
