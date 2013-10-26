@@ -19,11 +19,6 @@
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
-    <style type="text/css" media="screen">
-      #labWorkspace {
-        padding: 20px;
-      }
-    </style>
   </head>
 
   <body>
@@ -44,7 +39,7 @@
             For this lab, you will be working with the files:</br>
             </br> 
             -views/lab2.ejs (which contains your HTML)</br>
-            -public/javascripts/main.js (which is where you will write your JavaScript code)</br>
+            -public/javascripts/lab2/main.js (which is where you will write your JavaScript code)</br>
 
             </br>
             To see the output of console.log() statements in the Debugger console, right-click on your browser window, select "Inspect Element" which will open the Developer Tools window, and navigate to the "Console" tab to view the output. Feel free to use this a means of debugging. You can also go to the "Elements" tab in the Developer Tools window to examine the current layout of your DOM.</br>
@@ -56,20 +51,22 @@
             <a href="http://api.jquery.com/submit/" target="_blank">-JQuery submit() documentation page</a></br>
             <a href="http://api.jquery.com/val/" target="_blank">-JQuery val() documentation page</a></br>
             </br>
-            Example: To retrieve a list of shapes you would write the following code:</br>
-            <pre><code>
-            $.ajax({
-                url : "http://localhost:3000/api/shapes",
-                method : 'GET',
-                success : function(shapes) {
-                  shapes.forEach(function(shape) {
-                    console.log(shape.name); // Output: "Triangle"
-                    console.log(shape.numSides); // Output: 3
-                  })</br>
-                }</br>
-            });</br>
-            </code></pre>
-            </br>
+            <p class="lead">
+              Example: To retrieve a list of shapes you would write the following code:</br>
+              <pre><code>
+              $.ajax({
+                  url : "http://localhost:3000/api/shapes",
+                  method : 'GET',
+                  success : function(shapes) {
+                    shapes.forEach(function(shape) {
+                      console.log(shape.name); // Output: "Triangle"
+                      console.log(shape.numSides); // Output: 3
+                    })
+                  }
+              });
+              </code></pre>
+              </br>
+            </p>
             <p class="lead">
               Example: To retrieve the shape with id = 1, you would write the following code:</br>
               <pre><code>
@@ -79,8 +76,8 @@
                   success : function(shape) {
                     console.log(shape.name); // Output: "Triangle"
                     console.log(shape.numSides); // Output: 3
-                  }</br>
-              });</br>
+                  }
+              });
               </code></pre>
             </p>
             <p class="lead">

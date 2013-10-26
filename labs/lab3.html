@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lab 3 - Backbone.js</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/labs.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+      <!-- Begin page content -->
+      <div class="container">
+          <div class="page-header">
+            <h1>Lab 3 - Backbone.js</h1>
+          </div>
+          <p class="lead">
+            For the following exercises, we will be running a web application using a REST API (Powered by <a href="http://nodejs.org/">Node.js</a> and <a href="http://www.mongodb.org/">MongoDB</a>).</br>
+            Download the web application <a href="">here</a> and unzip the file.</br>
+            To kickstart the application, open an instance of Command Prompt, navigate to the unzipped directory, and run the setup.bat script.</br>
+            Once the application is running, Lab 3 will be located at <a href="http://localhost:3000/lab3" target="_blank">this url</a>.</br>
+            Open your Notepad++ editor and open up the unzipped directory.</br>
+            For this lab, you will be working with the files:</br>
+            </br> 
+            -views/lab3.ejs (which contains your HTML)</br>
+            -public/javascripts/lab3/main.js (which is where you will write your JavaScript code)</br>
+
+            </br>
+            To see the output of console.log() statements in the Debugger console, right-click on your browser window, select "Inspect Element" which will open the Developer Tools window, and navigate to the "Console" tab to view the output. Feel free to use this a means of debugging. You can also go to the "Elements" tab in the Developer Tools window to examine the current layout of your DOM.</br>
+            </br>
+            Try to resist the temptation to view the answer before completing the question!</br>
+            </br>
+            Feel free to use the following resources for additonal help:</br>
+            <a href="http://api.jquery.com/jQuery.ajax/" target="_blank">-JQuery ajax() documentation page</a></br>
+            <a href="http://api.jquery.com/submit/" target="_blank">-JQuery submit() documentation page</a></br>
+            <a href="http://api.jquery.com/val/" target="_blank">-JQuery val() documentation page</a></br>
+            </br>
+            <p class="lead">
+              Example: To retrieve a list of shapes you would write the following code:</br>
+              <pre><code>
+              $.ajax({
+                  url : "http://localhost:3000/api/shapes",
+                  method : 'GET',
+                  success : function(shapes) {
+                    shapes.forEach(function(shape) {
+                      console.log(shape.name); // Output: "Triangle"
+                      console.log(shape.numSides); // Output: 3
+                    })
+                  }
+              });
+              </code></pre>
+            </p>
+          </p>
+          <ol class="question-list">
+            <li class="question">
+           
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+
+            <li class="question">
+         
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+
+            <li class="question">
+              
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+          </ol>
+      </div> <!-- End of container -->
+    </div>  <!-- End of wrap -->
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">Modern Web Development with JavaScript - <span class='black'>&copy Rohit Kalkur</span></p>
+      </div>
+    </div>
+
+  </body>
+</html>

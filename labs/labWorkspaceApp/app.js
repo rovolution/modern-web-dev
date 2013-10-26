@@ -6,6 +6,8 @@
 var express = require('express');
 var mainRoutes = require('./routes');
 var	lab2Routes = require('./routes/lab2');
+var	lab3Routes = require('./routes/lab3');
+var	lab4Routes = require('./routes/lab4');
 var http = require('http');
 var path = require('path');
 
@@ -32,13 +34,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-console.log(lab2Routes);
-
 // Page Route definitions
 app.get('/', mainRoutes.index);
 app.get('/lab2', lab2Routes.index);
-// app.get('/lab3', routes.lab3);
-// app.get('/lab4', routes.lab3);
+app.get('/lab3', lab3Routes.index);
+app.get('/lab4', lab4Routes.index);
 
 // REST API Route Definitions
 app.get('/employees', employees.query);

@@ -100,25 +100,25 @@ var populateCollection = function() {
     var employees = [
 	    {
 	        name: "Bob Smith",
-	        email: "bsmith@mitre.org",
+	        email: "bsmith@corporation.org",
 	        rank: 4,
 	        title: "Information Systems Engineer"
 	    },
 	    {
 	      name: "Sally Johnson",
-	      email: "sjohnson@mitre.org",
+	      email: "sjohnson@corporation.org",
 	      rank: 2,
 	      title: "Aviation Engineer"
 	    },
 	    {
 	      name: "Alfred Granson",
-	      email: "agranson@mitre.org",
+	      email: "agranson@corporation.org",
 	      rank: 100,
 	      title: "CEO"
 	    },
 	    {
 	      name: "Jane Doe",
-	      email: "jdoe@mitre.org",
+	      email: "jdoe@corporation.org",
 	      rank: 5,
 	      title: "Project Lead"
 	    }
