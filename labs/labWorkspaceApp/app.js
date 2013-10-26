@@ -41,11 +41,12 @@ app.get('/lab3', lab3Routes.index);
 app.get('/lab4', lab4Routes.index);
 
 // REST API Route Definitions
-app.get('/employees', employees.query);
-app.get('/employees/:id', employees.get);
-app.put('/employees/:id', employees.update);
-app.post('/employees', employees.create);
-app.delete('/employees/:id', employees.delete);
+var baseApiUrl = "/api/employees";
+app.get(baseApiUrl, employees.query);
+app.get(baseApiUrl + '/:id', employees.get);
+app.put(baseApiUrl + '/:id', employees.update);
+app.post(baseApiUrl, employees.create);
+app.delete(baseApiUrl + '/:id', employees.delete);
 
 http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));

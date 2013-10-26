@@ -47,39 +47,71 @@
             Try to resist the temptation to view the answer before completing the question!</br>
             </br>
             Feel free to use the following resources for additonal help:</br>
-            <a href="http://api.jquery.com/jQuery.ajax/" target="_blank">-JQuery ajax() documentation page</a></br>
-            <a href="http://api.jquery.com/submit/" target="_blank">-JQuery submit() documentation page</a></br>
-            <a href="http://api.jquery.com/val/" target="_blank">-JQuery val() documentation page</a></br>
+            <a href="http://backbonejs.org/" target="_blank">-Backbone.js documentation page</a></br>
+            <a href="http://underscorejs.org/" target="_blank">-Underscore.js documentation page</a></br>
+            <a href="http://arturadib.com/hello-backbonejs/" target="_blank">-Hello Backbone tutorial</a></br>
             </br>
-            <p class="lead">
-              Example: To retrieve a list of shapes you would write the following code:</br>
-              <pre><code>
-              $.ajax({
-                  url : "http://localhost:3000/api/shapes",
-                  method : 'GET',
-                  success : function(shapes) {
-                    shapes.forEach(function(shape) {
-                      console.log(shape.name); // Output: "Triangle"
-                      console.log(shape.numSides); // Output: 3
-                    })
-                  }
-              });
-              </code></pre>
-            </p>
+            Navigate to and examine the Lab 3 workspace page in your browser. You should notice an <strong>Employees List</strong> table along with a <strong>Add New Employee</strong> form. </br>
+            </br>
+            Open the lab3.ejs page in your text editor and take a moment to examine the HTML markup. You will notice that the current page contents are being drawn from the <strong>employeeManagementViewTpl</strong> HTML template</br>
+            </br>
+            Open the /lab3/main.js in your text editor and take a moment to examine the existing JS code. You will notice there is only a single Backbone View called <strong>EmployeeManagementView</strong>.
+            </br>
+            </br>
+            In the current page setup, The JavaScript defines and creates an instance of EmployeeManagementView. This view is bound to the DOM element with id <em>employeeManagementView</em>. The DOM content for this view is rendered from the HTML template with id <em>employeeManagementViewTpl</em>. Take 2-3 minutes to familiarize yourself with this structure and understand it before proceeding with the questions.
+            </br>
           </p>
           <ol class="question-list">
             <li class="question">
-           
+              <p>Create a Backbone Model definiton called <strong>Employee</strong> that will be used to interface with individual employee objects we pull down from our REST API.</p>
+              <p>It should have the following default values set (if they are not already set on the JSON represention received from the server).</p>
+              <p>
+                <ul>
+                  <li>name : "Default Employee Name"</li>
+                  <li>email : "default@coporation.org"</li>
+                  <li>rank : -1</li>
+                  <li>title : "Default Employee Rank"</li>
+                </ul>
+              </p>
+              <p>Remember to bind it to the App.Models namespace!</p>
               <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
             </li>
 
             <li class="question">
-         
+              <p>Create a Backbone Collection definiton called <strong>Employees</strong> that will be used to interact with our <strong>/employees</strong> REST endpoint.</p>
+              <p>Remember to bind it to the App.Collections namespace!</p>
+              <p>Create an instance of this collection where indicated in the JS comments</p>
               <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
             </li>
 
             <li class="question">
-              
+              <p>Implement the <em>Add New Employee</em> form behavior so that new employees can be added to the table.</p>
+              <ul>
+                <li>You should create a Backbone View to represent a row view in the table.</li>
+                <li>The row view should use the template <strong>employeeTableRowTpl</strong></li>
+                <li>Each row view instance should have an <em>Employee</em> model associated with it</li>
+                <li>The employeeManagementView instance should be passed the instance of your <em>Employee's</em> collection</li>
+                <li>Check out <a href="http://arturadib.com/hello-backbonejs/docs/4.html" target="_blank">this example</a> to see a similar example.</li>
+              </ul>
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+
+            <li class="question">
+              <p>Once you have the above functionality working, you will notice that each row has an <em>Alert Info</em> button. Currently, this button does nothing.</p>
+              <p>Implement this button's functionality so that it calls the JavaScript <em>alert()</em> method with that row's information formatted in the following way:</p>
+              <p class="help-block">"Name: {name}, Email: {email}, Rank: {rank}, Title: {title}"</p>
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+
+            <li class="question">
+              <p>You will also notice that each row has a <em>Delete</em> button. Currently, this button does nothing.</p>
+              <p>Implement this button's functionality so that it:</p>
+              <ul>
+                <li>Deletes the employee from the server</li>
+                <li>Removes the row from the table</li>
+                <li>Remove the employee from the employee's collection</li>
+                <li>Hint: Use the Backbone Model <em>destroy()</em> and Backbone View <em>remove()</em> methods. See Backbone documentation page for further information.</li>
+              </ul>
               <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
             </li>
           </ol>
