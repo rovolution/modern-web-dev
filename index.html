@@ -642,6 +642,55 @@ var employeeListView = new EmployeeListView({
 				</section>
 
 				<section>
+					<h2>Templating Engines</h2>
+					<ul>
+						<li>Problem: In dynamic, data-driven applications, we are contantly adding/updating/removing different parts of the DOM</li>
+						<li>Need a way to render data-driven HTML views on the client side without page-refresh</li>
+						<li>Solution: Client-side templating engines!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Templating Engines</h2>
+					<p>Implementations:</p>
+					<ul>
+						<li><a href="http://underscorejs.org/">Underscore.js</a></li>
+						<li><a href="http://handlebarsjs.com/">Handlebars.js</a></li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+<script id="employeeListingTemplate" type="text/template">
+  <li class="employee-listing">
+    <div class="name"><@= name @></div> <!-- Outputs the 'name' property of the object passed to the template rendering -->
+    <div class="email"><@= email @></div>
+    <ul class="projects">
+	  <@ _.each(projects, function(project) { @> <!-- Can embed code into template if need be -->
+		  <li><@= project.name @></li>
+	  <@ })  @>
+    </ul>
+  </li>
+</script>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Templating Engines</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/* JS Code */
+var employeeListingTemplate = $("employeeListingTemplate").html(),
+    employeeObject = {
+           "name" : "Frank Johnson",
+           "email" : "fjohnson@superdupercorp.org"
+           "projects" : [
+                { "name" : "The Super Duper Project" },
+                { "name" : "The TOP SECRET Super Duper Project" }
+            ]
+	},
+	compiledTemplate = _.template(employeeListingTemplate, employeeObject);
+	// NOTE: You can now append 'compiledTemplate' to any part of your DOM
+					</code></pre>
+				</section>
+
+				<section>
 					<h2>Backbone.js - Router</h2>
 					<ul>
 						<li>Serialize application state from browser URL structure</li>
