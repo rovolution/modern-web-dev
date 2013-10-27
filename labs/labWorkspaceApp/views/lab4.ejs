@@ -1,17 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Modern Web Dev. - Lab 4 Workspace</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <div>
-   		<h3>Employee List</h3>
-   		<button id="getAllEmployees">Get All Employees</button>
-    </div>
+    <style type="text/css">
+      #addEmployeeForm {
+        margin: 50px 0px;
+      }
+    </style>
     <!-- Load JS Dependencies -->
-    <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="/javascripts/lab2/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script type="text/javascript" src="/javascripts/lab4/main.js"></script>
+  </head>
+  <body ng-app>
+    <h1>Modern Web Dev. - Lab 4 Workspace</h1>
+    <div id="employeeManagementView" ng-controller="EmployeeManagementViewCtrl">
+       <h3>Employee Management Dashboard</h3>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Rank</th>
+              <th>Title</th>
+              <th>Alert Row Info</th>
+              <th>Delete?</th>
+            </tr>
+          </thead>
+          <tbody id="employeeTableBody"></tbody>
+        </table>
+        <form id="addEmployeeForm" name="form1">
+          <h3>Add New Employee</h3>
+          <label for="newName">Name:</label>
+          <input id="newName" type="text"></input>
+          <label for="newEmail">Email:</label>
+          <input id="newEmail" type="email"></input>
+          <label for="newRank">Rank:</label>
+          <input id="newRank" min="1" type="number"></input>
+          <label for="newTitle">Title:</label>
+          <input id="newTitle" type="text"></input>
+          <button type="submit">Add</button>
+        </form>
+        <button id="randomButton" type="button" ng-click="triggerRandomBtnAction()">Click Me! Even though I serve no real purpose!</button>
+    </div>
+
+    <!-- Templates -->
+    <script type="text/ng-template" id="employeeTableRowTpl">
+      <td>{{ employee._id }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.rank }}</td>
+      <td>{{ employee.title }}</td>
+      <td><button class="alert-info-btn" type="button">Alert Info</button></td>
+      <td><button class="delete-btn" type="button">Delete</button></td>
+    </script>
+  
   </body>
 </html>

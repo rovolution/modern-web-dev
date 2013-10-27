@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lab 4 - Angular.js</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/labs.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+      <!-- Begin page content -->
+      <div class="container">
+          <div class="page-header">
+            <h1>Lab 4 - Angular.js</h1>
+          </div>
+          <p class="lead">
+            For the following exercises, we will be running a web application using a REST API (Powered by <a href="http://nodejs.org/">Node.js</a> and <a href="http://www.mongodb.org/">MongoDB</a>).</br>
+            Download the web application <a href="">here</a> and unzip the file.</br>
+            To kickstart the application, open an instance of Command Prompt, navigate to the unzipped directory, and run the setup.bat script.</br>
+            Once the application is running, Lab 4 will be located at <a href="http://localhost:3000/lab4" target="_blank">this url</a>.</br>
+            Open your Notepad++ editor and open up the unzipped directory.</br>
+            For this lab, you will be working with the files:</br>
+            </br> 
+            -views/lab4.ejs (which contains your HTML markup)</br>
+            -public/javascripts/lab4/main.js (which is where you will write your JavaScript code)</br>
+
+            </br>
+            To see the output of console.log() statements in the Debugger console, right-click on your browser window, select "Inspect Element" which will open the Developer Tools window, and navigate to the "Console" tab to view the output. Feel free to use this a means of debugging. You can also go to the "Elements" tab in the Developer Tools window to examine the current layout of your DOM.</br>
+            </br>
+            Try to resist the temptation to view the answer before completing the question!</br>
+            </br>
+            Feel free to use the following resources for additonal help:</br>
+            <a href="http://docs.angularjs.org/api" target="_blank">-Angular.js documentation page</a></br>
+            </br>
+            Navigate to and examine the Lab 4 workspace page in your browser. You should notice an <strong>Employees List</strong> table along with a <strong>Add New Employee</strong> form. </br>
+            </br>
+            Open the lab4.ejs page in your text editor and take a moment to examine the HTML markup. You will notice that the elements have properties annotated with <strong>ng</strong>. These are called directives, and they are used by Angular to attach behavior to DOM elements and wire together the various components of the application.
+            </br>
+            Open the /lab4/main.js in your text editor and take a moment to examine the existing JS code. You will notice there is only a single Angular Controller called <strong>EmployeeManagementViewCtrl</strong>.
+            </br>
+            </br>
+            In the current page setup, the <em>EmployeeManagementViewCtrl</em> is bound to the div with id <strong>employeeManagementView</strong>. This is done through the ng-controller directive. The <em>EmployeeManagementViewCtrl</em> controller is responsible for handling the view logic for this portion of the DOM.
+            </br>
+          </p>
+          <ol class="question-list">
+            <li class="question">
+           		<p>Create an Angular resource called "Employees" for the '/employees' API route.</p>
+           		<p>This resource will allow you to interact with Employee data via the REST API.</p>
+           		<p>See the <a href="http://docs.angularjs.org/api/ngResource.$resource" target="_blank">Angular documentation on $resources</a> for guidance.</p>
+             	<button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+
+            <li class="question">
+            	<p>Implement the Add New Employee form behavior so that new employees can be added to the table.</p>
+            	<h5>Hints:</h5>
+            	<ul>
+            		<li>
+		                Inject the Employees resource into the EmployeeManagementViewCtrl, and add a variable to the $scope object called 'employees'. Set it equal to the response of Employees.query(); This 'employees' variable can now be referred to in your view.
+	                </li>
+	                <li>
+		                You should create a <em>&lttr&gt</em> element within 
+		                the <em>&lttbody&gt</em> and give it the <em>ng-include</em> and <em>ng-repeat</em> directives. See documentation for further details.
+	                </li>
+	                <li>
+		                Set the above <em>ng-include</em> directive equal to the <strong>employeeTableRowTpl</strong> template.
+	                </li>
+              	</ul>
+              	<button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+
+            <li class="question">
+              <p>Once you have the above functionality working, you will notice that each row has an <em>Alert Info</em> button. Currently, this button does nothing.</p>
+              <p>Implement this button's functionality so that it calls the JavaScript <em>alert()</em> method with that row's information formatted in the following way:</p>
+              <p class="help-block">"Name: {name}, Email: {email}, Rank: {rank}, Title: {title}"</p>
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+              <h5>Hints:</h5>
+            	<ul>
+            		<li>
+		                Create an Angular controller called <strong>EmployeeRowCtrl</strong> and bind it to the <tr>
+	                </li>
+	                <li>
+		                Implement the functionality in a method within the <em>EmployeeRowCtrl</em> controller and bind it to its $scope object.
+	                </li>
+              	</ul>
+            </li>
+
+             <li class="question">
+              <p>You will also notice that each row has a <em>Delete</em> button.Currently, this button does nothing.</p>
+              <p>Implement this button's functionality so that it:</p>
+              <ul>
+                <li>
+                	Injects the Employee's resource into the <em>EmployeeRowCtrl</em> controller, and calls the Employee resource's <em>$delete()</em> method
+                </li>
+                <li>
+                	Removes the row from the view. To do this, when you receive a successful response from the <em>$delete()</em> method, remove the employee object from the employee's array bound to the $scope of the <em>EmployeeManagementViewCtrl</em>.
+                </li>
+              </ul>
+              <button type="button" class="btn btn-xs btn-success btn-answer">View Answer</button>
+            </li>
+          </ol>
+      </div> <!-- End of container -->
+    </div>  <!-- End of wrap -->
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">Modern Web Development with JavaScript - <span class='black'>&copy Rohit Kalkur</span></p>
+      </div>
+    </div>
+
+  </body>
+</html>
