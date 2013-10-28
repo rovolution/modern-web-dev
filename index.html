@@ -84,15 +84,15 @@
 					<h2>JavaScript - Primitive Data Types</h2>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 /* Variable Initialization/Declaration */
-var myVariable = 5;
+var myNumber = 5;
 var myString = "myString";
 var myBoolean = false;
 
 /* Print Output To Debug Console */
-console.log("my variable is " + myVariable); // Output: "my variable is 5" 
+console.log("my number is " + myNumber); // Output: "my variable is 5" 
 console.log("my string is " + myString); // Output: "my string is myString"
 
-console.log( typeof myVariable ); // Output: "number"
+console.log( typeof myNumber ); // Output: "number"
 console.log( typeof myString ); // Output: "string"
 console.log( typeof myBoolean ); // Output: "boolean"
 					</code></pre>
@@ -106,6 +106,8 @@ var obj = {
 	"prop1" : 5,
 	prop2 : "value of property 2"
 };
+
+obj.prop3 = false; // Add a property to an already defined object
 
 console.log( obj.prop1 ); // Output: 5
 console.log( obj["prop2"] ); // Output: "value of property 2"
@@ -132,14 +134,47 @@ console.log( typeof myArray ); // Output: "object"
 				<section>
 					<h2>JavaScript - Boolean Logic</h2>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-/* Comparison Operators */
-console.log( 0 == false ); // Output: true
-console.log( 0 === false ); // Output: false
-console.log( 0 != false ); // Output: false
-console.log( 0 !== false ); // Output: true
+/* Basic Comparison Operators */
+var a = 1;
+var b = 2;
+
+console.log( a > b ); // Output: false
+console.log( a < b); // Output: true
+console.log( a <= 1 ); // Output: true
+console.log( a >= 1 ); // Output: true
+
+
+/* Strict vs Loose Type Checking */
+console.log( 0 == false ); // Output: true (loose check)
+console.log( 0 === false ); // Output: false (strict check)
+console.log( 0 != false ); // Output: false (loose check)
+console.log( 0 !== false ); // Output: true (strict check)
+
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Conditionals</h2>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/* If-Else Statement */
+var age = 15;
+
+if(age < 21) {
+	console.log("You CANNOT drink legally in the United States!");
+	console.log("Go drink a soda!");
+} else if(age === 21) {
+	console.log("Its your first of being able to drink alcohol legally!");
+	console.log("Be responsible!");
+} else {
+	console.log("You are older than 21.");
+	console.log("Still be responsible!");
+}
+// Output:
+// console.log("You CANNOT drink legally in the United States!");
+// console.log("Go drink a soda!");
 
 /* Ternary Statement */
-var val = 0 <= 15 ? "less than or equal to" : "greater than";
+var val = (0 <= 15) ? "less than or equal to" : "greater than";
 console.log(val); // Output: "less than or equal to"
 					</code></pre>
 				</section>
@@ -202,6 +237,12 @@ mySecondFunction(2); // Output: "This is my other function with arg 2"
 (function() { 
     console.log("Immediately Invoked Function Expression (IIFE)"); 
 })() // Output: "Immediately Invoked Function Expression (IIFE)"
+
+// Can add functions as properties to an object
+var myCoolObject = {};
+myCoolObject.printFoo = function() {
+	console.log("Foo");
+};
 					</code></pre>
 				</section>
 
@@ -216,11 +257,6 @@ var user = {
 }
 user.printName(); /* Output: "Username: Al Grasso" */
 					</code></pre>
-				</section>
-
-				<section>
-					<h2>JavaScript - Prototypical Inheritance</h2>
-					-- TODO: Insert diagram of prototype chain --
 				</section>
 
 				<section>
@@ -262,6 +298,11 @@ console.log( myOrange instanceof Orange ) // Output: true
 console.log( myOrange instanceof Object ) // Output: true
 console.log( myOrange instanceof Banana ) // Output: false
 					</code></pre>
+				</section>
+
+				<section>
+					<h2>JavaScript - Prototypical Inheritance</h2>
+					-- TODO: Insert diagram of prototype chain --
 				</section>
 
 				<section>
