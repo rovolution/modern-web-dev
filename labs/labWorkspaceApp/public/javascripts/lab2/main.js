@@ -1,16 +1,8 @@
 $(document).ready(function() {
-	/* Write code here */
-	$.ajax({
-		url : "http://localhost:3000/employees",
-		method: "POST",
-		data : {
-			name : "Rolo",
-			email : "rkalkur@mitre.org",
-			rank : 6,
-			title : "Engineerred"
-		},
-		success : function(response) {
-			console.log(response);
-		}
-	});
-});
+	/***********************
+		
+		Write code inside this callback function (which waits for all the DOM objects to be loaded before being triggered)
+
+	************************/
+
+}); //End of document.ready()

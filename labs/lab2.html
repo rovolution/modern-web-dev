@@ -102,14 +102,14 @@
           <ol class="question-list">
             <li class="question">
               <p>Write an HTTP GET request to retrieve the list of employees and populate the table.</p>
-              <p>The list of employees is retrieved at the API route <strong>/employees</strong></p>
+              <p>The list of employees is retrieved at the API route <strong>/api/employees</strong></p>
               <p>
                Hints:</br>
                 <ul>
                   <li>Use the JQuery <em>.append()</em> function to append a new row to the table body (tbody). Remember to add in the <em>&lttr&gt</em> and <em>&lttd&gt</em> tags to your string!</li>
                  <li>
                   You can see the response you will receive from a GET request by inputting the REST API route by navigating to it in your browser.</br>
-                  For example, navigate to <a href="http://localhost:3000/employees">http://localhost:3000/employees</a> in your browser to see the JSON formatted list of employees.</br>
+                  For example, navigate to <a href="http://localhost:3000/api/employees">http://localhost:3000/api/employees</a> in your browser to see the JSON formatted list of employees.</br>
                  </li>
                  <li>
                   After you type your code, refresh your browser to see the results. Writing client-side code typically involves frequent browser refreshing.
@@ -128,7 +128,7 @@
                   <li>Use the JQuery <em>.submit()</em> method to bind to the form's 'submit' event. This event is triggered when the "Add" btn is clicked. </li>
                   <li>When binding a JQuery listener to an element's event, always remember to disable the default event in the callback function by calling <em>e.preventDefault()</em></li>
                   <li>Use the JQuery <em>.val()</em> function to extract the value of a form input element.</li>
-                  <li>Your code must make an HTTP POST request to the <strong>/employees</strong> route with the following data parameters: <em>name, email, rank, title</em></li>
+                  <li>Your code must make an HTTP POST request to the <strong>/api/employees</strong> route with the following data parameters: <em>name, email, rank, title</em></li>
                   <li>You must wait on the response from the server before appending the user entry to the table.</li>
                 </ul>
               </p>
