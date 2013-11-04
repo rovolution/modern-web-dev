@@ -8,15 +8,15 @@
         margin: 50px 0px;
       }
     </style>
-  </head>
-  <body>
-    <h1>Modern Web Dev. - Lab 3 Workspace</h1>
-    <div id="employeeManagementView"></div>
-    <!-- Load JS Dependencies -->
+      <!-- Load JS Dependencies -->
     <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
     <script type="text/javascript" src="/javascripts/lab3/main.js"></script>
+  </head>
+  <body>
+    <h1>Modern Web Dev. - Lab 3 Workspace</h1>
+    <div id="employeeManagementView"></div>
 
     <!-- HTML Templates -->
     <script id="employeeManagementViewTpl" type="text/template">
@@ -51,7 +51,6 @@
     </script>
 
     <script id="employeeTableRowTpl" type="text/template">
-      <tr>
         <td><@= _id @></td>
         <td><@= name @></td>
         <td><@= email @></td>
@@ -59,7 +58,6 @@
         <td><@= title @></td>
         <td><button class="alert-info-btn" type="button">Alert Info</button></td>
         <td><button class="delete-btn" type="button">Delete</button></td>
-      </tr>
     </script>
   </body>
 </html>

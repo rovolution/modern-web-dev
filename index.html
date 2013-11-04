@@ -47,6 +47,14 @@
 				</section>
 
 				<section>
+					<h2>Prerequisites</h2>
+					<ul>
+						<li>Understanding of how a web application works</li>
+						<li>Web application development experience in another language/framework (Java Spring, Ruby on Rails, PHP etc...)</li>
+					</ul>
+				</section>
+
+				<section>
 					<h2>Course Objectives</h2>
 					<ul>
 						<li>JavaScript Foundations</li>
@@ -78,6 +86,28 @@
 						<li>First called Mocha and then LiveScript</li>
 						<li>Has nothing to do with Java despite the name!</li>
 					</ul>
+				</section>
+
+				<section>
+					<h2>How It Works</h2>
+					<ul>
+						<li>HTML page has <code>&ltscript&gt&lt/script&gt</code> tags where JavaScript code is written</li>
+						<li>JavaScript is an interpreted language, so the code immediately executed after being loaded into browser</li>
+						<li>JavaScript can also be loaded in from external files</li>
+					</ul>
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+&lt!DOCTYPE html&gt
+&lthtml ng-app&gt
+  &lthead&gt
+    &ltscript&gt
+    	alert("Running this JavaScript!") //Immediately triggers an alert box when the page is loaded 
+    &lt/script&gt
+    &ltscript type="text/javascript" src="main.js"&gt&lt/script&gt &lt!-- Loads in an external script --&gt
+  &lt/head&gt
+  &ltbody&gt
+  &lt/body&gt
+&lt/html&gt
+					</code></pre>
 				</section>
 
 				<section>
@@ -138,10 +168,10 @@ console.log( typeof myArray ); // Output: "object"
 var a = 1;
 var b = 2;
 
-console.log( a > b ); // Output: false
-console.log( a < b); // Output: true
-console.log( a <= 1 ); // Output: true
-console.log( a >= 1 ); // Output: true
+console.log( a &gt b ); // Output: false
+console.log( a &lt b); // Output: true
+console.log( a &lt= 1 ); // Output: true
+console.log( a &gt= 1 ); // Output: true
 
 
 /* Strict vs Loose Type Checking */
@@ -446,6 +476,15 @@ $(".listing").off('click');
 				</section>
 
 				<section>
+					<h2>HTML</h2>
+					<ul>
+						<li><strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage</li>
+						<li>Markup language for web browsers</li>
+						<li>Used to define structure and layout for web pages</li>						
+					</ul>
+				</section>
+
+				<section>
 					<h2>DOM</h2>
 					<ul>
 						<li><strong>D</strong>ocument <strong>O</strong>bject <strong>M</strong>odel</li>
@@ -549,6 +588,22 @@ $(".listing").off('click');
 				</section>
 
 				<section>
+					<h2>Broswer Developer Tools</h2>
+					<ul>
+						<li>Built into all major browsers</li>
+						<li>Allows you to:
+							<ul>
+								<li>inspect DOM elements</li>
+								<li>debug JavaScript</li>
+								<li>track incoming/outcoming HTTP requests</li>
+							</ul>
+						</li>
+						<li>Extremely useful when developing JavaScript!</li>
+						<li>To access Chrome Developer Tools, righ-click and go to "Inspect Element"</li>
+					</ul>
+				</section>
+
+				<section>
 					<h2>Lab Time - Client-Server Interaction</h2>
 					<a href="labs/lab2.html" target="_blank">Click to begin lab</a>
 				</section>
@@ -602,7 +657,7 @@ $(".listing").off('click');
 					<h2>Backbone.js</h2>
 					<ul>
 						<li>Created by Jeremy Ashkenas</li>
-						<li>Client-side code separated into Models, Collections, Views, and Routers</li>
+						<li>Client-side code separated into Models, Collections, and Views</li>
 					</ul>
 				</section>
 
@@ -731,32 +786,6 @@ var employeeListingTemplate = $("employeeListingTemplate").html(),
 	compiledTemplate = _.template(employeeListingTemplate, employeeObject);
 	// NOTE: You can now append 'compiledTemplate' to any part of your DOM
 					</code></pre>
-				</section>
-
-				<section>
-					<h2>Backbone.js - Router</h2>
-					<ul>
-						<li>Serialize application state from browser URL structure</li>
-						<li>Triggers functions when patterns matches browser URL</li>
-						<li>Prevents reload request to server-side</li>
-						<li>Delegates to hash routing if HTML5 History API not available</li>
-						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-var AppRouter = Backbone.Router.extend({
-	routes : {
-           "user/:id" : "user", // Matches '/user/1' for History API or '#/user/1' for hash routing
-           "about" : "about" // Matches '/about' for History API or '#/about' for hash routing
-	},
-
-	user : function(id) {
-           loadUserPage(id);
-	},
-
-	about: function() {
-           loadAboutPage();
-	}
-});
-						</code></pre>
-					</ul>
 				</section>
 
 				<section>
@@ -896,7 +925,7 @@ $resource('/users');
 				<section>
 					<h2>Module Loading</h2>
 					<ul>
-						<li>Problem: All code stored in a single file (typically called app.js)</li>
+						<li>Problem: All code stored in a single file (typically called app.js or main.js)</li>
 						<li>Can leads to global namespace conflicts</li>
 						<li>Difficult to test individual components of codebase</li>
 						<li>Becomes tough to read code!</li>
@@ -906,7 +935,7 @@ $resource('/users');
 				<section>
 					<h2>Module Loading</h2>
 					<ul>
-						<li>Soltuon: Separate code into individual files - modules</li>
+						<li>Solution: Separate code into individual files - modules</li>
 						<li>Improves testability and performance</li>
 						<li>Popular implementations:
 							<ul>
@@ -962,6 +991,8 @@ $resource('/users');
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
+		<script src="js/example.js"></script>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
 		<script>
 

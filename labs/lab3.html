@@ -32,8 +32,7 @@
           </div>
           <p class="lead">
             For the following exercises, we will be running a web application using a REST API (Powered by <a href="http://nodejs.org/">Node.js</a> and <a href="http://www.mongodb.org/">MongoDB</a>).</br>
-            Download the web application <a href="">here</a> and unzip the file.</br>
-            To kickstart the application, open an instance of Command Prompt, navigate to the unzipped directory, and run the setup.bat script.</br>
+            To kickstart the application, open an instance of Command Prompt, navigate to the <i>labWorkspaceApp</i> directory, and run the setup.bat script.</br>
             Once the application is running, Lab 3 will be located at <a href="http://localhost:3000/lab3" target="_blank">this url</a>.</br>
             Open your Notepad++ editor and open up the unzipped directory.</br>
             For this lab, you will be working with the files:</br>
@@ -45,8 +44,10 @@
             To see the output of console.log() statements in the Debugger console, right-click on your browser window, select "Inspect Element" which will open the Developer Tools window, and navigate to the "Console" tab to view the output. Feel free to use this a means of debugging. You can also go to the "Elements" tab in the Developer Tools window to examine the current layout of your DOM.</br>
             </br>
             Try to resist the temptation to view the answer before completing the question!</br>
+            The answer may not be identical to your solution and may not even be the best way to solve the problem, so feel free to get creative with your solution!</br>
             </br>
             Feel free to use the following resources for additonal help:</br>
+            <a href="http://api.jquery.com/" target="_blank">-JQuery documentation page</a></br>
             <a href="http://backbonejs.org/" target="_blank">-Backbone.js documentation page</a></br>
             <a href="http://underscorejs.org/" target="_blank">-Underscore.js documentation page</a></br>
             <a href="http://arturadib.com/hello-backbonejs/" target="_blank">-Hello Backbone tutorial</a></br>
@@ -64,15 +65,6 @@
           <ol class="question-list">
             <li class="question">
               <p>Create a Backbone Model definiton called <strong>Employee</strong> that will be used to interface with individual employee objects we pull down from our REST API.</p>
-              <p>It should have the following default values set (if they are not already set on the JSON represention received from the server).</p>
-              <p>
-                <ul>
-                  <li>name : "Default Employee Name"</li>
-                  <li>email : "default@coporation.org"</li>
-                  <li>rank : -1</li>
-                  <li>title : "Default Employee Rank"</li>
-                </ul>
-              </p>
               <p>Remember to bind it to the App.Models namespace!</p>
               <a href="answers/lab3-1.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
             </li>
@@ -80,7 +72,7 @@
             <li class="question">
               <p>Create a Backbone Collection definiton called <strong>Employees</strong> that will be used to interact with our <strong>/employees</strong> REST endpoint.</p>
               <p>Remember to bind it to the App.Collections namespace!</p>
-              <p>Create an instance of this collection where indicated in the JS comments</p>
+              <p>Create an instance of this collection where indicated in the JS comments. Call the <em>.fetch()</em> method of this instance to retrieve the list of employees. This will automatically make the AJAX HTTP GET request, and when the list of employees is returned, it will create <em>Employee</em> Models for each and add them to the collection.</p>
               <a href="answers/lab3-2.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
             </li>
 
@@ -91,8 +83,11 @@
                 <li>The row view should use the template <strong>employeeTableRowTpl</strong></li>
                 <li>Each row view instance should have an <em>Employee</em> model associated with it</li>
                 <li>The employeeManagementView instance should be passed the instance of your <em>Employee's</em> collection</li>
+                <li>The employeeManagementView should use the Backbone <em>listenTo()</em> method and listen to any 'add' events on the collection it is passed (which is referred to by this.collection). When this event is triggered, your view should bind a callback function that will create an employee row view for the new employee. Your callback function should have one argument, which is the Backbone Model for the newly added employee.</li>
                 <li>Check out <a href="http://arturadib.com/hello-backbonejs/docs/4.html" target="_blank">this example</a> to see a similar example.</li>
               </ul>
+              </br>
+              <p>Feel free to look at the answer and copy it, as this question can be difficult.</p>
               <a href="answers/lab3-3.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
             </li>
 
