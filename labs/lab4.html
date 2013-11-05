@@ -32,19 +32,20 @@
           </div>
           <p class="lead">
             For the following exercises, we will be running a web application using a REST API (Powered by <a href="http://nodejs.org/">Node.js</a> and <a href="http://www.mongodb.org/">MongoDB</a>).</br>
-            To kickstart the application, open an instance of Command Prompt, navigate to the <i>labWorkspaceApp</i> directory, and run the setup.bat script.</br>
             Once the application is running, Lab 4 will be located at <a href="http://localhost:3000/lab4" target="_blank">this url</a>.</br>
             Open your Notepad++ editor and open up the unzipped directory.</br>
             For this lab, you will be working with the files:</br>
             </br> 
             -views/lab4.ejs (which contains your HTML markup)</br>
             -public/javascripts/lab4/main.js (which is where you will write your JavaScript code)</br>
-
             </br>
             To see the output of console.log() statements in the Debugger console, right-click on your browser window, select "Inspect Element" which will open the Developer Tools window, and navigate to the "Console" tab to view the output. Feel free to use this a means of debugging. You can also go to the "Elements" tab in the Developer Tools window to examine the current layout of your DOM.</br>
             </br>
             Try to resist the temptation to view the answer before completing the question!</br>
-            The answer may not be identical to your solution and may not even be the best way to solve the problem, so feel free to get creative with your solution!</br>
+            </br>
+            <b>The answer may not be identical to your solution and may not even be the best way to solve the problem, so feel free to get creative with your solution!</b></br>
+            </br>
+            <b>These questions are very challenging, so if you get stumped, feel free to view the answer and copy it! As you are copying the code, examine it line by line and try to get a understanding for what is happening.</b></br>
             </br>
             Feel free to use the following resources for additonal help:</br>
             <a href="http://docs.angularjs.org/api" target="_blank">-Angular.js documentation page</a></br>
@@ -53,51 +54,110 @@
             </br>
             Open the lab4.ejs page in your text editor and take a moment to examine the HTML markup. You will notice that the elements have properties annotated with <strong>ng</strong>. These are called directives, and they are used by Angular to attach behavior to DOM elements and wire together the various components of the application.
             </br>
-            Open the /lab4/main.js in your text editor and take a moment to examine the existing JS code. You will notice there is only a single Angular Controller called <strong>EmployeeManagementViewCtrl</strong>.
+            Open the /lab4/main.js in your text editor and take a moment to examine the existing JS code. You will notice there is only a single Angular Controller called <strong>EmployeeManagementViewCtrl</strong>. 
             </br>
             </br>
-            In the current page setup, the <em>EmployeeManagementViewCtrl</em> is bound to the div with id <strong>employeeManagementView</strong>. This is done through the ng-controller directive. The <em>EmployeeManagementViewCtrl</em> controller is responsible for handling the view logic for this portion of the DOM.
+            In the current page setup, the <em>EmployeeManagementViewCtrl</em> is bound to the div with id <strong>employeeManagementView</strong>. This is done through the ng-controller directive. The <em>EmployeeManagementViewCtrl</em> controller is responsible for handling the view logic for this portion of the DOM.</br>
             </br>
+            You will also notice a button at the bottom of the page with the id <strong>randomButton</strong>. It has an <strong>ng-click</strong> directive bound to it, which means that when this button is clicked, the <strong>triggerRandomBtn()</strong> method bound to the controller's scope will be triggered. Go ahead and click on it. It should pop up with an alert box saying "Random Button was clicked!!" If you want, try changing the contents of the message in the /lab4/main.js file.</br>
+            </br>
+            Examine the /lab4/main.js file contents again. In here you will notice on Line 1 that a module called 'MyApp' is being created.
+            This is what is referred to as an 'application namespace', and is used to structure the various parts of an application. Here we are creating a namespace, stating that is is dependant on the 'ngResource' module, and saving the reference to the 'App' variable. If you refer back to our markup code (lab4.ejs), you will see that the <em>&ltbody&gt&lt/body&gt</em> tag has an 'ngApp' directive bound to it, which essentially means that anything within this tag is within the scope of the 'MyApp' module.</br>
+            </br>
+
           </p>
           <ol class="question-list">
             <li class="question">
            		<p>Create an Angular resource called <strong>Employees</strong> for the '/employees' API route.</p>
            		<p>This resource will allow you to interact with Employee data via the REST API.</p>
+              <p>For example, the following code is an example of creating a resource for "Shapes" that interacts with the /api/shapes REST endpoint (if it were implemented):</p>
+              <p>We define the resource, and then inject into 'MyCtrl' where it can be used.</p>
+              <pre>
+              <code>
+/* Creating of resource */
+App.factory("Shapes", function($resource) {
+  return $resource('/api/shapes/:id', {_id: '@id'});
+});
+
+/* Usage of resource */
+App.controller('MyCtrl', function($scope, Shapes) {
+  /* 
+  * Makes HTTP GET to /api/shapes, and stores 
+  * resulting JSON object in <em>shapes</em> variable 
+  */
+  var shapes = Shapes.query();
+
+  /* 
+  * Makes HTTP GET to /api/shapes/123 to get the shape
+  * with _id = "123", and stores resulting JSON object
+  * in <em>myShape</em> variable resulting JSON object in
+  * the <em>myShape</em> variable 
+  */
+  var myShape = Shapes.get({ _id: "123" }); 
+});
+              </code>
+              </pre>
            		<p>See the <a href="http://docs.angularjs.org/api/ngResource.$resource" target="_blank">Angular documentation on $resources</a> for guidance.</p>
              	<a href="answers/lab4-1.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
+            </li>
+
+             <li class="question">
+              Now use your newly created <em>Employees</em> resource to populate the employees table with the existing employees. Refresh the page to see if the table is populated.
+              </br>
+              </br>
+              <em>
+              Hint: Inject the Employees resource into the EmployeeManagementViewCtrl, and add a variable to the $scope object called 'employees'. Set it equal to the response of Employees.query(); This 'employees' variable can now be referred to in your view.
+              </em>
+              </br>
+              <a href="answers/lab4-2.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
             </li>
 
             <li class="question">
             	<p>Implement the Add New Employee form behavior so that new employees can be added to the table.</p>
             	<h5>Hints:</h5>
             	<ul>
-            		<li>
-		                Inject the Employees resource into the EmployeeManagementViewCtrl, and add a variable to the $scope object called 'employees'. Set it equal to the response of Employees.query(); This 'employees' variable can now be referred to in your view.
-	                </li>
-	                <li>
-		                You should create a <em>&lttr&gt</em> element within 
-		                the <em>&lttbody&gt</em> and give it the <em>ng-include</em> and <em>ng-repeat</em> directives. See documentation for further details.
-	                </li>
-	                <li>
-		                Set the above <em>ng-include</em> directive equal to the <strong>employeeTableRowTpl</strong> template.
-	                </li>
-              	</ul>
-              	<a href="answers/lab4-2.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
+                <li>
+                  Within your <em>EmployeeManagementViewCtrl</em>, bind a variable to the scope called <em>employeeToAdd</em> (or something that indicates it is the new employee to add). Then use the ng-model directive to bind to the employeeToAdd variable so that you can easily refer to the current form values from your controller.</br>
+                  </br>
+                  For example, if you wanted to refer to the user input to the "Name:" field from the controller, you would modify the input box to the following:</br>
+                  </br>
+                  <code>&ltinput id="newName" type="text" ng-model="employeeToAdd.name"&gt&lt/input&gt</code></br>
+                  </br>
+                  Then within my controller code, I could refer to <em>$scope.employeeToAdd.name</em> to access the current form value for the new employee Name.
+                </li>
+                <li>
+                  Add an <em>ng-submit</em> directive to the <em>&ltform&gt</em> element. This value of this directive will be triggered whenever the form's 'submit' event is triggered (in this case, when the 'Add' button is clicked).
+                  </br>
+                  For example, to trigger the <em>addNewEmployee()</em> method on the controller when the form's 'submit' event is triggered, you would modify the form markup to the following:</br>
+                  </br>
+                  <code>&ltform id="addEmployeeForm" name="form1" ng-submit="addNewEmployee()"&gt&lt/form&gt</code>
+                </li>
+                <li>
+                  Within your <em>addNewEmployee()</em> method, you should make call to the Employees <em>save()</em> method, passing it a JSON object with the following properties: <em>name, email, rank, title</em>. This method will construct and send an HTTP POST request to the /api/employees route, sending along the properties of the JSON object as parameters. If you followed the structure from the first hint, you should be able to just pass in the <em>$scope.employeeToAdd</em> variable. 
+                </li>
+                <li>
+                   <strong>Remember to update your view after you add the new user!</strong> To do this, when you call the Employees <em>save()</em> method, pass in a callback function as the second parameter. This callback function will take one argument, which is the newly created employee object. Within this callback function, take this new employee object and add it to the $scope.employees array using the <em>.push()</em> JavaScript array method. Angular's two-way data binding will automically update the view...Pretty cool!
+                </li>
+              </ul>
+            	<a href="answers/lab4-3.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
             </li>
 
             <li class="question">
-              <p>Once you have the above functionality working, you will notice that each row has an <em>Alert Info</em> button. Currently, this button does nothing.</p>
+              <p>Once you have the above functionality working, you will notice that each row has an <em>Alert Info</em> button. Currently this button does nothing.</p>
               <p>Implement this button's functionality so that it calls the JavaScript <em>alert()</em> method with that row's information formatted in the following way:</p>
               <p class="help-block">"Name: {name}, Email: {email}, Rank: {rank}, Title: {title}"</p>
-              <a href="answers/lab4-3.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
+              <a href="answers/lab4-4.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
               <h5>Hints:</h5>
             	<ul>
             		<li>
-		                Create an Angular controller called <strong>EmployeeRowCtrl</strong> and bind it to the <tr>
-	                </li>
-	                <li>
-		                Implement the functionality in a method within the <em>EmployeeRowCtrl</em> controller and bind it to its $scope object.
-	                </li>
+		              Add the <em>ng-click</em> directive to 'Alert Info' <em>&ltbutton&gt</em> tag.
+	              </li>
+                <li>
+	                Set the ng-click directive equal to a function bound to the controller scope that will be responsible for alerting the info. Pass the 'employee' variable into the function. For example, in the markup below, when the alert button is clicked, it will pass in the employee object to the <em>alertInfo()</em> method. This object can then be referred to within the alertInfo() method as the first argument to the method.
+                  <code>
+                    &lttd&gt&ltbutton class="alert-info-btn" type="button" ng-click="alertInfo(employee)"&gtAlert Info&lt/button&gt&lt/td&gt
+                  </code>
+                </li>
               	</ul>
             </li>
 
@@ -106,13 +166,16 @@
               <p>Implement this button's functionality so that it:</p>
               <ul>
                 <li>
-                	Injects the Employee's resource into the <em>EmployeeRowCtrl</em> controller, and calls the Employee resource's <em>$delete()</em> method
+                	Calls the Employee resource's <em>$delete()</em> method (passing in the proper employee id).
                 </li>
                 <li>
                 	Removes the row from the view. To do this, when you receive a successful response from the <em>$delete()</em> method, remove the employee object from the employee's array bound to the $scope of the <em>EmployeeManagementViewCtrl</em>.
                 </li>
+                <li>
+                  To remove a value from a JavaScript array, use the Array <em>splice()</em> method. See <a href="http://www.w3schools.com/jsref/jsref_splice.asp" target="_blank">this link</a> for the documentation.
+                </li>
               </ul>
-              <a href="answers/lab4-4.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
+              <a href="answers/lab4-5.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
             </li>
           </ol>
       </div> <!-- End of container -->

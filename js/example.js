@@ -1,5 +1,11 @@
 var myVar = 1;
 
-myVar++;
+incrementMyVar();
 
 myVar = "New value";
+
+
+
+function incrementMyVar() {
+	myVar++;
+}

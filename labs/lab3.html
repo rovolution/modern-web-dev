@@ -32,19 +32,21 @@
           </div>
           <p class="lead">
             For the following exercises, we will be running a web application using a REST API (Powered by <a href="http://nodejs.org/">Node.js</a> and <a href="http://www.mongodb.org/">MongoDB</a>).</br>
-            To kickstart the application, open an instance of Command Prompt, navigate to the <i>labWorkspaceApp</i> directory, and run the setup.bat script.</br>
             Once the application is running, Lab 3 will be located at <a href="http://localhost:3000/lab3" target="_blank">this url</a>.</br>
             Open your Notepad++ editor and open up the unzipped directory.</br>
             For this lab, you will be working with the files:</br>
             </br> 
             -views/lab3.ejs (which contains your HTML markup)</br>
             -public/javascripts/lab3/main.js (which is where you will write your JavaScript code)</br>
-
             </br>
             To see the output of console.log() statements in the Debugger console, right-click on your browser window, select "Inspect Element" which will open the Developer Tools window, and navigate to the "Console" tab to view the output. Feel free to use this a means of debugging. You can also go to the "Elements" tab in the Developer Tools window to examine the current layout of your DOM.</br>
             </br>
             Try to resist the temptation to view the answer before completing the question!</br>
-            The answer may not be identical to your solution and may not even be the best way to solve the problem, so feel free to get creative with your solution!</br>
+            </br>
+            <b>The answer may not be identical to your solution and may not even be the best way to solve the problem, so feel free to get creative with your solution!</b></br>
+            </br>
+            <b>These questions are very challenging, so if you get stumped, feel free to view the answer and copy it! As you are copying the code, examine it line by line and try to get a understanding for what is happening.</b></br>
+            </br>
             </br>
             Feel free to use the following resources for additonal help:</br>
             <a href="http://api.jquery.com/" target="_blank">-JQuery documentation page</a></br>
@@ -56,23 +58,37 @@
             </br>
             Open the lab3.ejs page in your text editor and take a moment to examine the HTML markup. You will notice that the current page contents are being drawn from the <strong>employeeManagementViewTpl</strong> HTML template</br>
             </br>
-            Open the /lab3/main.js in your text editor and take a moment to examine the existing JS code. You will notice there is only a single Backbone View called <strong>EmployeeManagementView</strong>.
+            Open the /lab3/main.js in your text editor and take a moment to examine the existing JS code. You will notice there is only a single Backbone View called <strong>EmployeeManagementView</strong>. It contains a few properties.
+          </p>
+          <ul class='lead'>
+            <li><em>template</em>: Uses JQuery to retrieve the HTML template from the DOM</li>
+            <li><em>initialize</em>: The first method that is called when an instance of the view is created. Used to do any view setup/initialization.</li>
+            <li><em>render</em>: This method is used to compile a template and append it to the view's container element</li>
+            <li><em>events</em>: This object is where you add any event bindings on the view. For instance, we have a single event binding on the button with id#randomButton. When that button is clicked, the triggerRandomBtnAction() method is triggered.</li>
+          </ul>
+          <p class="lead">
+            All views in Backbone have an <strong>el</strong> property. This is essentially a reference to the DOM element it corresponds to. Even if the View has not been rendered yet, it still has an el property. All views also have an <strong>$el</strong> property, which is a JQuery-wrapped reference of its DOM. This is what is typically used to interact with the view. Read <a href="http://backbonejs.org/#View-el" target="_blank">this</a> for further clarification.
             </br>
             </br>
             In the current page setup, The JavaScript defines and creates an instance of EmployeeManagementView. This view is bound to the DOM element with id <em>employeeManagementView</em>. The DOM content for this view is rendered from the HTML template with id <em>employeeManagementViewTpl</em>. Take 2-3 minutes to familiarize yourself with this structure and understand it before proceeding with the questions.
             </br>
           </p>
+
           <ol class="question-list">
             <li class="question">
               <p>Create a Backbone Model definiton called <strong>Employee</strong> that will be used to interface with individual employee objects we pull down from our REST API.</p>
-              <p>Remember to bind it to the App.Models namespace!</p>
+              Hints:
+              <ul>
+                <li>The employee objects returned from the REST route use '_id' as the id. Backbone uses 'id' as its default id, so we need a way to tell Backbone to use '_id' as the unique id. We do this by adding a property called 'idAttribute' to the model definition and set it to be "_id"</li>
+                <li>Remember to bind it to the App.Models namespace! A <strong>namespace</strong> is a way of structure and organizing code to that we can easily refer to different objects. In JavaScript, this is typically done by creating objects, and then adding properties to those objects for additional namespaces (for instance, we have a general namespace called 'App', and then we extend that namespace with additional namespaces for 'Models', 'Views')
+              </ul>
               <a href="answers/lab3-1.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
             </li>
 
             <li class="question">
               <p>Create a Backbone Collection definiton called <strong>Employees</strong> that will be used to interact with our <strong>/employees</strong> REST endpoint.</p>
               <p>Remember to bind it to the App.Collections namespace!</p>
-              <p>Create an instance of this collection where indicated in the JS comments. Call the <em>.fetch()</em> method of this instance to retrieve the list of employees. This will automatically make the AJAX HTTP GET request, and when the list of employees is returned, it will create <em>Employee</em> Models for each and add them to the collection.</p>
+              <p>Create an instance of this collection where indicated in the JS comments. Call the <em>.fetch()</em> method of this instance to retrieve the list of employees. This will automatically make the AJAX HTTP GET request, and when the list of employees is returned, it will create <em>Employee</em> Models for each and automatically add them to the collection.</p>
               <a href="answers/lab3-2.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
             </li>
 
