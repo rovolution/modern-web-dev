@@ -100,7 +100,7 @@ I will add Unix command line instructions at a later date.
 
    To restart the server, go the command prompt running the Node.js web-server, and type _Ctrl + C_. 
 
-   Then run the command in Step 5 again.
+   Then run the command in Step 6 again.
 
 ## License
 
