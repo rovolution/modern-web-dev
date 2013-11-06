@@ -20,7 +20,14 @@ Use the arrow keys to navigate the slide deck. The directional pad on the bottom
 
 **NOTE:** Make sure you use Google Chrome or Mozilla Firefox...Internet Explorer is currently not supported.
 
-## How-to: set up and run MongoDB (Labs 2-4)
+## Programs to install
+
+Before setting up the web server and database for Labs 2-4, make sure your system has the following programs installed:
+
++ [Node.js](http://nodejs.org/download/)
++ [MongoDB](http://www.mongodb.org/downloads)
+
+## How-to: Set up and run MongoDB (Labs 2-4)
 
 **NOTE:** Instructions assume that you are using a machine running on Windows 7 or 8.
 
@@ -51,7 +58,7 @@ I will add Unix command line instructions at a later date.
 5. Keep this command prompt open and keep MongoDB running!
 
 
-## How-to: set up and run Node.js web-server (Labs 2-4)
+## How-to: Set up and run Node.js web-server (Labs 2-4)
 
 NOTE: Instructions assume that you are using a machine running on Windows 7 or 8.
 
@@ -69,21 +76,27 @@ I will add Unix command line instructions at a later date.
 	```
 	set HTTP_PROXY=http://gatekeeper.mitre.org:80
 	```
-4. Type the following command to install the necessary dependencies for the Node.js web server:
+
+4. Type the following command to install [Express](http://expressjs.com/) (a web development framework for Node.js):
 	```
-	npm install
+	npm install -g express
 	```
 
-5. Type the following command to run the server:
+5. Type the following command to install the necessary dependencies for the Node.js web server:
+	```
+	npm install # Make sure you are in the \labWorkspaceApp directory when you run this command
+	```
+
+6. Type the following command to run the server:
 	```			
-	node app.js
+	node app.js # Make sure you are in the \labWorkspaceApp directory when you run this command
 	```
 
-6. The application should be running on your localhost at port 3000. Navigate to <code>http://localhost:3000</code> in your browser to access the lab workspaces.
+7. The application should be running on your localhost at port 3000. Navigate to <code>http://localhost:3000</code> in your browser to access the lab workspaces.
 
 	Always keep this Command Prompt window open!
 
-7. Whenever you are beginning the next lab, make sure to restart the server so that the database is cleared and repopulated with the dummy data. 
+8. Whenever you are beginning the next lab, make sure to restart the server so that the database is cleared and repopulated with the dummy data. 
 
    To restart the server, go the command prompt running the Node.js web-server, and type _Ctrl + C_. 
 
