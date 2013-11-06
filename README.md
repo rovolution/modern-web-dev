@@ -79,7 +79,7 @@ I will add Unix command line instructions at a later date.
 	node app.js
 	```
 
-6. The application should be running on your localhost at port 3000. Navigate to http://localhost:3000 to access the lab workspaces.
+6. The application should be running on your localhost at port 3000. Navigate to <code>http://localhost:3000</code> to access the lab workspaces.
 
 	Always keep this Command Prompt window open!
 
