@@ -80,7 +80,7 @@ exports.delete = function(req, res) {
 				res.send({ 'error':'An error occurred when deleting employee#' + id + ": " + err });
 			} else {
 				console.log('' + result + ' document(s) deleted');
-				res.send(req.body);
+				res.send({ 'message': 'User with id: ' + id + ' was successfully deleted.' });
 			}
 		});
 	});

@@ -88,17 +88,22 @@
             <li class="question">
               <p>Create a Backbone Collection definiton called <strong>Employees</strong> that will be used to interact with our <strong>/employees</strong> REST endpoint.</p>
               <p>Remember to bind it to the App.Collections namespace!</p>
-              <p>Create an instance of this collection where indicated in the JS comments. Call the <em>.fetch()</em> method of this instance to retrieve the list of employees. This will automatically make the AJAX HTTP GET request, and when the list of employees is returned, it will create <em>Employee</em> Models for each and automatically add them to the collection.</p>
+              <p>Create an instance of this collection where indicated in the JS comments.</p>
+              <p><strong>Do not populate the table yet!</strong> We will do that as part of the next exercise</p>
               <a href="answers/lab3-2.png" target="_blank" type="button" class="btn btn-xs btn-success btn-answer">View Answer</a>
             </li>
 
             <li class="question">
               <p>Implement the <em>Add New Employee</em> form behavior so that new employees can be added to the table.</p>
+              <p>In addition, implement the functionality such that when the page is loaded, the table is populated with the list of existing employees.</p>
               <ul>
                 <li>You should create a Backbone View to represent a row view in the table.</li>
                 <li>The row view should use the template <strong>employeeTableRowTpl</strong></li>
                 <li>Each row view instance should have an <em>Employee</em> model associated with it</li>
-                <li>The employeeManagementView instance should be passed the instance of your <em>Employee's</em> collection</li>
+                <li>
+                  Call the <em>.fetch()</em> method of the <em>Employee's</em> collection instance to retrieve the list of employees. This will automatically make the AJAX HTTP GET request, and when the list of employees is returned, it will create <em>Employee</em> Models for each and automatically add them to the collection.
+                </li>
+                <li>The employeeManagementView instance should be passed the instance of your <em>Employee's</em> collection.</li>
                 <li>The employeeManagementView should use the Backbone <em>listenTo()</em> method and listen to any 'add' events on the collection it is passed (which is referred to by this.collection). When this event is triggered, your view should bind a callback function that will create an employee row view for the new employee. Your callback function should have one argument, which is the Backbone Model for the newly added employee.</li>
                 <li>Check out <a href="http://arturadib.com/hello-backbonejs/docs/4.html" target="_blank">this example</a> to see a similar example.</li>
               </ul>

@@ -294,7 +294,8 @@ user.printName(); /* Output: "Username: Al Grasso" */
 /* Base prototype */
 var fruit = {
   "color" : null,
-  "shape" : null
+  "shape" : null,
+  "price" : 1.50
 }
 
 /* Orange constructor */
@@ -319,6 +320,9 @@ var myBanana = new Banana();
 
 console.log(myOrange.color); // Output: "orange"
 console.log(myBanana.color); // Output: "yellow"
+
+console.log(myOrange.price); // Output: 1.50
+console.log(myBanana.price); // Output: 1.50
 
 myOrange.makeJuice(); // Output: "Made orange juice!"
 myBanana.makeJuice(); // TypeError: Object #&ltBanana&gt has no method 'makeJuice'
@@ -521,7 +525,7 @@ $(".listing").off('click');
 							<ul>
 								<li>Path <span class="custom-highlight-purple">'/path/to/go/to'</span></li>
 								<li>Method <span class="custom-highlight-purple">GET</span></li>
-								<li>Paramters <span class="custom-highlight-purple">Key-value pairs</span></li>
+								<li>Parameters <span class="custom-highlight-purple">Key-value pairs</span></li>
 							</ul>
 						</li>
 					</ul>
@@ -598,17 +602,10 @@ $(".listing").off('click');
 							</ul>
 						</li>
 						<li>Extremely useful when developing JavaScript!</li>
-						<li>To access Chrome Developer Tools, righ-click and go to "Inspect Element"</li>
+						<li>To access Chrome Developer Tools, right-click and go to "Inspect Element"</li>
 					</ul>
 				</section>
 
-				<section>
-					<h2>Lab Time - Client-Server Interaction</h2>
-					<a href="labs/lab2.html" target="_blank">Click to begin lab</a>
-				</section>
-			</section><!-- End of Client-server interaction section -->
-
-			<section><!-- Beginning of Client side Frameworks section -->
 				<section>
 					<h2>Traditional Application Structure</h2>
 					<img src="img/traditional_web_architecture.png"></img>
@@ -618,6 +615,14 @@ $(".listing").off('click');
 					<h2>Single Page Application (SPA)</h2>
 					<img src="img/single_page_architecture.png"></img>
 				</section>
+
+				<section>
+					<h2>Lab Time - Client-Server Interaction</h2>
+					<a href="labs/lab2.html" target="_blank">Click to begin lab</a>
+				</section>
+			</section><!-- End of Client-server interaction section -->
+
+			<section><!-- Beginning of Client side Frameworks section -->
 
 				<section>
 					<h2></h2>
